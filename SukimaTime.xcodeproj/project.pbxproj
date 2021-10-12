@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		550A0B7A26D8C7FA0056536D /* SukimaTimeTabaBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550A0B7926D8C7FA0056536D /* SukimaTimeTabaBarController.swift */; };
+		5512522626B9547300F3E455 /* EndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512522526B9547300F3E455 /* EndViewController.swift */; };
+		556677612711AD6500B5ABE2 /* ToDoTVCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556677602711AD6500B5ABE2 /* ToDoTVCTableViewCell.swift */; };
+		556677662711AD9300B5ABE2 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556677652711AD9300B5ABE2 /* ListViewController.swift */; };
+		5566776B2711B77300B5ABE2 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566776A2711B77300B5ABE2 /* ContainerViewController.swift */; };
 		557529E826AEF85900D38365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557529E726AEF85900D38365 /* AppDelegate.swift */; };
 		557529EA26AEF85900D38365 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557529E926AEF85900D38365 /* SceneDelegate.swift */; };
 		557529EC26AEF85900D38365 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557529EB26AEF85900D38365 /* ViewController.swift */; };
@@ -15,6 +20,11 @@
 		557529F426AEF85B00D38365 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 557529F226AEF85B00D38365 /* LaunchScreen.storyboard */; };
 		557529FF26AEF85C00D38365 /* SukimaTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557529FE26AEF85C00D38365 /* SukimaTimeTests.swift */; };
 		55752A0A26AEF85C00D38365 /* SukimaTimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55752A0926AEF85C00D38365 /* SukimaTimeUITests.swift */; };
+		55752A1B26AEF99600D38365 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55752A1A26AEF99600D38365 /* ToDoViewController.swift */; };
+		55752A2026AEFD5F00D38365 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55752A1F26AEFD5F00D38365 /* SelectViewController.swift */; };
+		55752A2526AEFFC300D38365 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55752A2426AEFFC300D38365 /* SuggestionViewController.swift */; };
+		55752A3226B00AE500D38365 /* RunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55752A3126B00AE500D38365 /* RunViewController.swift */; };
+		5592A2AD26FB2042009DD014 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5592A2AC26FB2042009DD014 /* Color.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +45,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		550A0B7926D8C7FA0056536D /* SukimaTimeTabaBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SukimaTimeTabaBarController.swift; sourceTree = "<group>"; };
+		5512522526B9547300F3E455 /* EndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndViewController.swift; sourceTree = "<group>"; };
+		556677602711AD6500B5ABE2 /* ToDoTVCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTVCTableViewCell.swift; sourceTree = "<group>"; };
+		556677652711AD9300B5ABE2 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		5566776A2711B77300B5ABE2 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		557529E426AEF85900D38365 /* SukimaTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SukimaTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		557529E726AEF85900D38365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		557529E926AEF85900D38365 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +64,11 @@
 		55752A0526AEF85C00D38365 /* SukimaTimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SukimaTimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55752A0926AEF85C00D38365 /* SukimaTimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SukimaTimeUITests.swift; sourceTree = "<group>"; };
 		55752A0B26AEF85C00D38365 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55752A1A26AEF99600D38365 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
+		55752A1F26AEFD5F00D38365 /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
+		55752A2426AEFFC300D38365 /* SuggestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
+		55752A3126B00AE500D38365 /* RunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunViewController.swift; sourceTree = "<group>"; };
+		5592A2AC26FB2042009DD014 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +124,18 @@
 				557529EB26AEF85900D38365 /* ViewController.swift */,
 				557529ED26AEF85900D38365 /* Main.storyboard */,
 				557529F026AEF85B00D38365 /* Assets.xcassets */,
+				5592A2AC26FB2042009DD014 /* Color.xcassets */,
 				557529F226AEF85B00D38365 /* LaunchScreen.storyboard */,
 				557529F526AEF85B00D38365 /* Info.plist */,
+				55752A1A26AEF99600D38365 /* ToDoViewController.swift */,
+				55752A1F26AEFD5F00D38365 /* SelectViewController.swift */,
+				55752A2426AEFFC300D38365 /* SuggestionViewController.swift */,
+				55752A3126B00AE500D38365 /* RunViewController.swift */,
+				5512522526B9547300F3E455 /* EndViewController.swift */,
+				550A0B7926D8C7FA0056536D /* SukimaTimeTabaBarController.swift */,
+				556677602711AD6500B5ABE2 /* ToDoTVCTableViewCell.swift */,
+				556677652711AD9300B5ABE2 /* ListViewController.swift */,
+				5566776A2711B77300B5ABE2 /* ContainerViewController.swift */,
 			);
 			path = SukimaTime;
 			sourceTree = "<group>";
@@ -232,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				557529F426AEF85B00D38365 /* LaunchScreen.storyboard in Resources */,
+				5592A2AD26FB2042009DD014 /* Color.xcassets in Resources */,
 				557529F126AEF85B00D38365 /* Assets.xcassets in Resources */,
 				557529EF26AEF85900D38365 /* Main.storyboard in Resources */,
 			);
@@ -258,8 +289,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				550A0B7A26D8C7FA0056536D /* SukimaTimeTabaBarController.swift in Sources */,
+				556677612711AD6500B5ABE2 /* ToDoTVCTableViewCell.swift in Sources */,
+				5512522626B9547300F3E455 /* EndViewController.swift in Sources */,
+				55752A2026AEFD5F00D38365 /* SelectViewController.swift in Sources */,
+				55752A1B26AEF99600D38365 /* ToDoViewController.swift in Sources */,
+				556677662711AD9300B5ABE2 /* ListViewController.swift in Sources */,
+				55752A2526AEFFC300D38365 /* SuggestionViewController.swift in Sources */,
 				557529EC26AEF85900D38365 /* ViewController.swift in Sources */,
+				55752A3226B00AE500D38365 /* RunViewController.swift in Sources */,
 				557529E826AEF85900D38365 /* AppDelegate.swift in Sources */,
+				5566776B2711B77300B5ABE2 /* ContainerViewController.swift in Sources */,
 				557529EA26AEF85900D38365 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,6 +477,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 795J9NKZJ3;
 				INFOPLIST_FILE = SukimaTime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -455,6 +496,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 795J9NKZJ3;
 				INFOPLIST_FILE = SukimaTime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

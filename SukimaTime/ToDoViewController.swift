@@ -5,9 +5,11 @@
 //  Created by Honoka Nishiyama on 2021/07/26.
 //
 
+
 import UIKit
 
-class ToDoViewController: UIViewController {
+class ToDoViewController: UIViewController{
+    
     
     @IBOutlet weak var todoTextField:UITextField!
     @IBOutlet weak var timeSegmentedControl: UISegmentedControl!
@@ -66,6 +68,7 @@ class ToDoViewController: UIViewController {
         dateTextField.isEnabled=false
         
         }
+
     
     override func viewDidLayoutSubviews() {
             datePicker.subviews.forEach({ $0.subviews.forEach({ $0.removeFromSuperview() }) })
@@ -98,6 +101,7 @@ class ToDoViewController: UIViewController {
             }
         }
     }
+    
     
     @IBAction func dateChanged(_ sender: UIDatePicker) {
         self.dateTextField.text = self.format(date: datePicker.date)

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class ListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
     @IBOutlet weak var table:UITableView!
     @IBOutlet weak var segmentedControl:UISegmentedControl!
@@ -25,8 +25,6 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         super.viewDidLoad()
         
         set()
-        
-//        array.removeFirst()
 
         table.dataSource = self
         table.delegate=self
@@ -40,14 +38,26 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         presentingViewController?.beginAppearanceTransition(false, animated: animated)
         super.viewWillAppear(animated)
         
-        set()
+        table.reloadData()
         
-        array.removeFirst()
+        
+        set()
         
     }
     
+    
     @objc func set(){
+        
+        print("set")
         todoArray=saveData.object(forKey: "list") as! [[Any]]
+        print(todoArray)
+        print(todoArray.count)
+        
+        if todoArray.count >= 2 {
+            if todoArray[0].isEmpty {
+                todoArray.removeFirst()
+            }
+        }
         
         checked5Array = [[]]
         checked10Array = [[]]
@@ -55,108 +65,81 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         checked30Array = [[]]
         
         if todoArray.count == 1{
-        }else{
-            if todoArray.count == 2{
-                for i in 1...1{
-                    if Int(todoArray[i][1] as! String)! == 5{
-                        checked5Array += [todoArray[i]]
-                    }
-                    if Int(todoArray[i][1] as! String)! == 10{
-                        checked10Array += [todoArray[i]]
-                    }
-                    if Int(todoArray[i][1] as! String)! == 15{
-                        checked15Array += [todoArray[i]]
-                    }
-                    if Int(todoArray[i][1] as! String)! == 30{
-                        checked30Array += [todoArray[i]]
-                    }
-                }
+            if todoArray[0].isEmpty{
             }else{
-                for i in 1...Int(todoArray.count-1) {
-                    if Int(todoArray[i][1] as! String)! == 5 {
-                        checked5Array += [todoArray[i]]
-                    }
-                    if Int(todoArray[i][1] as! String)! == 10{
-                        checked10Array += [todoArray[i]]
-                    }
-                    if Int(todoArray[i][1] as! String)! == 15{
-                        checked15Array += [todoArray[i]]
-                    }
-                    if Int(todoArray[i][1] as! String)! == 30{
-                        checked30Array += [todoArray[i]]
-                    }
-                }
+                minutecheck()
             }
+        }
+        
+        if todoArray.count >= 2{
+            minutecheck()
         }
         
         array=todoArray
 
     }
     
+    @objc func minutecheck(){
+        for i in 0...Int(todoArray.count-1){
+            if Int(todoArray[i][1] as! String)! == 5{
+                checked5Array += [todoArray[i]]
+            }
+            if Int(todoArray[i][1] as! String)! == 10{
+                checked10Array += [todoArray[i]]
+            }
+            if Int(todoArray[i][1] as! String)! == 15{
+                checked15Array += [todoArray[i]]
+            }
+            if Int(todoArray[i][1] as! String)! == 30{
+                checked30Array += [todoArray[i]]
+            }
+            
+        }
+    }
+    
     @IBAction func ValueChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             set()
-//            array = todoArray
-//            if array.count == 1{
-//            }else{
-                array.removeFirst()
-//            }
         case 1:
             set()
             array = checked5Array
-//            if array.count == 1{
-//            }else{
-                array.removeFirst()
-//            }
         case 2:
             set()
             array = checked10Array
-//            if array.count == 1{
-//            }else{
-                array.removeFirst()
-//            }
         case 3:
             set()
             array = checked15Array
-//            if array.count == 1{
-//            }else{
-                array.removeFirst()
-//            }
         case 4:
             set()
             array = checked30Array
-//            if array.count == 1{
-//            }else{
-                array.removeFirst()
-//            }
         default:
             set()
-//            array=todoArray
-//            if array.count == 1{
-//            }else{
-                array.removeFirst()
-//            }
         }
         print(array.count)
+        print(array)
+        
+        if todoArray.count >= 2{
+            if array[0].isEmpty{
+                array.removeFirst()
+            }
+        }
         
         table.reloadData()
     }
     
+//    tableviewのcellの幅
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) ->CGFloat {
         return 100
     }
     
+//    tableviewのcellの数：
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if array.count == 0{
+        if array[0].isEmpty{
             return 0
         }else{
-            if array.count == 1{
-                return 1
-            }else{
-                return array.count
-            }
+            return array.count
         }
         
     }
@@ -201,7 +184,10 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
             
             print(self.array)
             print(self.todoArray)
-            for i in 1...Int(self.todoArray.count-1) {
+            
+            for i in 0...Int(self.todoArray.count-1) {
+                print(self.array)
+                print(self.array[indexPath.row])
                 if (self.todoArray[i][0] as! String) == (self.array[indexPath.row][0] as! String) {
                     if (self.todoArray[i][1] as! String) == (self.array[indexPath.row][1] as! String){
                         if (self.todoArray[i][2] as! String) == (self.array[indexPath.row][2] as! String){
@@ -210,6 +196,7 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
                             print(self.todoArray)
                             self.array.remove(at: indexPath.row)
                             self.table.deleteRows(at: [indexPath], with: .automatic)
+                            
                             break
                         }
                     }

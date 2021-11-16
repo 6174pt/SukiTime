@@ -131,6 +131,22 @@
             </objects>
             <point key="canvasLocation" x="1246" y="789"/>
         </scene>
+        <!--Home-->
+        <scene sceneID="xsC-xI-54c">
+            <objects>
+                <viewController id="ovU-cp-y1l" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qqy-PF-pML">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="TwB-JJ-txx"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="ckz-um-sJH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x9E-FW-lPl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2565" y="829"/>
+        </scene>
         <!--ToDo-->
         <scene sceneID="EAl-A3-tIh">
             <objects>
@@ -145,18 +161,38 @@
                                     <segue destination="ewa-R6-8bu" kind="embed" id="otr-gW-AdW"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTs-bk-muf">
+                                <rect key="frame" x="324" y="723" width="70" height="70"/>
+                                <color key="backgroundColor" name="Blue1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="EPJ-iZ-tOR"/>
+                                    <constraint firstAttribute="width" constant="70" id="LRS-GC-Zty"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="" id="uCB-Dr-aG4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tRc-fV-VhP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="LPm-Eq-eTy" firstAttribute="trailing" secondItem="tRc-fV-VhP" secondAttribute="trailing" id="0W5-Yb-9wB"/>
+                            <constraint firstItem="tRc-fV-VhP" firstAttribute="bottom" secondItem="gTs-bk-muf" secondAttribute="bottom" constant="20" id="26I-r1-3WO"/>
                             <constraint firstItem="LPm-Eq-eTy" firstAttribute="top" secondItem="8vf-QG-oeY" secondAttribute="top" id="VUM-0l-Xa0"/>
+                            <constraint firstItem="tRc-fV-VhP" firstAttribute="trailing" secondItem="gTs-bk-muf" secondAttribute="trailing" constant="20" id="qJx-06-frB"/>
                             <constraint firstItem="LPm-Eq-eTy" firstAttribute="leading" secondItem="tRc-fV-VhP" secondAttribute="leading" id="rfL-Qp-yX9"/>
                             <constraint firstAttribute="bottom" secondItem="LPm-Eq-eTy" secondAttribute="bottom" id="tJc-8w-lZq"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="ToDo" image="list.bullet" catalog="system" id="BBC-jd-ZWB"/>
                     <navigationItem key="navigationItem" id="8S7-O9-5Ve"/>
+                    <connections>
+                        <outlet property="button" destination="gTs-bk-muf" id="THy-9Q-XBP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WSC-rf-YW7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -167,11 +203,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ToDoViewController" customModule="SukimaTime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LLN-0c-FP4">
-                                <rect key="frame" x="20" y="248" width="374" height="400"/>
+                                <rect key="frame" x="20" y="221" width="374" height="400"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="bUF-5w-obu"/>
@@ -196,13 +232,13 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ToDoの追加" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9a9-Ng-tUr">
-                                <rect key="frame" x="30" y="323" width="354" height="18"/>
+                                <rect key="frame" x="30" y="296" width="354" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.34509803919999998" green="0.3803921569" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LDE-oB-HIS">
-                                <rect key="frame" x="60" y="555" width="294" height="40"/>
+                                <rect key="frame" x="60" y="528" width="294" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="QmR-5z-WtJ"/>
                                 </constraints>
@@ -211,25 +247,25 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ToDo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ID-vX-6KY">
-                                <rect key="frame" x="30" y="361" width="354" height="18"/>
+                                <rect key="frame" x="30" y="334" width="354" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.34509803921568627" green="0.38039215686274508" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所要時間" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YnX-Sd-Z6X">
-                                <rect key="frame" x="30" y="439" width="354" height="18"/>
+                                <rect key="frame" x="30" y="412" width="354" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.34509803921568627" green="0.38039215686274508" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="期限" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DP3-Cv-huN">
-                                <rect key="frame" x="30" y="527" width="354" height="18"/>
+                                <rect key="frame" x="30" y="500" width="354" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.34509803921568627" green="0.38039215686274508" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nv7-bh-svd">
-                                <rect key="frame" x="60" y="389" width="294" height="40"/>
+                                <rect key="frame" x="60" y="362" width="294" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="KmC-yr-CbQ"/>
                                 </constraints>
@@ -241,7 +277,7 @@
                                 </connections>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jg2-sd-g0z">
-                                <rect key="frame" x="130" y="472" width="143" height="32"/>
+                                <rect key="frame" x="130" y="445" width="143" height="32"/>
                                 <segments>
                                     <segment title="5"/>
                                     <segment title="10"/>
@@ -263,11 +299,14 @@
                                 <rect key="frame" x="302" y="44" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="全てリセット">
-                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="reset" destination="BYZ-38-t0r" eventType="touchUpInside" id="ejb-Bl-skl"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PzH-ug-I2R">
-                                <rect key="frame" x="60" y="467" width="40" height="40"/>
+                                <rect key="frame" x="60" y="440" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Iol-1X-JnP"/>
                                     <constraint firstAttribute="height" constant="40" id="Uch-Oz-7Qu"/>
@@ -277,13 +316,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add ToDo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1BF-Ka-Xj3">
-                                <rect key="frame" x="30" y="289" width="354" height="24"/>
+                                <rect key="frame" x="30" y="262" width="354" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="wac-pU-UTv">
-                                <rect key="frame" x="60" y="555" width="294" height="40"/>
+                                <rect key="frame" x="60" y="528" width="294" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="1xj-aN-D9w"/>
                                 </constraints>
@@ -292,7 +331,7 @@
                                 </connections>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sF2-1f-GV2">
-                                <rect key="frame" x="30" y="668" width="354" height="45"/>
+                                <rect key="frame" x="30" y="641" width="354" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="stE-uP-6Re"/>
                                 </constraints>
@@ -343,7 +382,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4ID-vX-6KY" secondAttribute="trailing" constant="30" id="ztJ-bd-smx"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ToDo" image="plus" catalog="system" id="E3H-RP-RKM"/>
+                    <tabBarItem key="tabBarItem" title="ToDo" image="house.fill" catalog="system" id="E3H-RP-RKM"/>
                     <navigationItem key="navigationItem" id="rEW-JQ-au3"/>
                     <connections>
                         <outlet property="add" destination="sF2-1f-GV2" id="hXb-m8-Yuc"/>
@@ -357,7 +396,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-400" y="94"/>
+            <point key="canvasLocation" x="1243" y="1458"/>
         </scene>
         <!--Select-->
         <scene sceneID="vXH-Ac-BDh">
@@ -368,13 +407,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ToDoを追加してください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ZT-ZY-3TG">
-                                <rect key="frame" x="120.5" y="311" width="173.5" height="18"/>
+                                <rect key="frame" x="38.5" y="-137" width="173.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" name="Blue2"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pDx-NL-sfS">
-                                <rect key="frame" x="107" y="369" width="200" height="158"/>
+                                <rect key="frame" x="25" y="-79" width="200" height="158"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Nb9-pz-X2e">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="69"/>
@@ -429,7 +468,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please add ToDo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7c-Yu-NPw">
-                                <rect key="frame" x="133.5" y="277" width="147" height="24"/>
+                                <rect key="frame" x="51.5" y="-171" width="147" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -853,8 +892,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="36b-3R-WhF" kind="relationship" relationship="viewControllers" id="1Aa-mZ-FgS"/>
+                        <segue destination="ovU-cp-y1l" kind="relationship" relationship="viewControllers" id="efP-Lf-CTc"/>
                         <segue destination="1Jv-2C-y0T" kind="relationship" relationship="viewControllers" id="IaJ-Ja-864"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="9iI-La-i6x"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qIb-pk-Jby" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -885,9 +924,12 @@
         <segue reference="X2Y-a5-fv5"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.grid.2x2.fill" catalog="system" width="128" height="114"/>
+        <namedColor name="Blue1">
+            <color red="0.3449999988079071" green="0.37999999523162842" blue="0.45500001311302185" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Blue2">
             <color red="0.5220000147819519" green="0.59600001573562622" blue="0.71799999475479126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -8,9 +8,17 @@
 import UIKit
 
 class ContainerViewController: UIViewController {
+    
+    @IBOutlet var button:UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        button.layer.cornerRadius=button.frame.height/2
+        button.layer.shadowOffset = CGSize(width: 3, height: 3 )
+        button.layer.shadowOpacity = 0.5
+        button.layer.shadowRadius = 10
+        button.layer.shadowColor = UIColor.gray.cgColor
         
 
         // Do any additional setup after loading the view.

@@ -6,10 +6,16 @@
 //
 
 
+import Foundation
 import UIKit
 
-class ToDoViewController: UIViewController{
+protocol TodoViewControllerProtocol {
+    func viewDidDismiss()
+}
+
+class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDelegate{
     
+//    var delegate: TodoViewControllerProtocol?
     
     @IBOutlet weak var todoTextField:UITextField!
     @IBOutlet weak var timeSegmentedControl: UISegmentedControl!
@@ -28,6 +34,8 @@ class ToDoViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        presentationController?.delegate = self
         
         saveData.register(defaults: ["list": [[]] ])
         todoArray=saveData.object(forKey: "list") as! [[Any]]
@@ -61,6 +69,8 @@ class ToDoViewController: UIViewController{
         presentingViewController?.beginAppearanceTransition(false, animated: animated)
         super.viewWillAppear(animated)
         
+//        print("\(type(of: self)): \(#function)")
+        
         todoArray = saveData.object(forKey: "list") as! [[Any]]
         
         setNumber()
@@ -73,6 +83,11 @@ class ToDoViewController: UIViewController{
     override func viewDidLayoutSubviews() {
             datePicker.subviews.forEach({ $0.subviews.forEach({ $0.removeFromSuperview() }) })
         }
+    
+    override func viewDidAppear(_ animated: Bool) {
+//        print("\(type(of: self)): \(#function)")
+    }
+
     
     func setNumber(){
         todoTextField.text=""
@@ -100,6 +115,24 @@ class ToDoViewController: UIViewController{
                 }
             }
         }
+    }
+    
+    func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
+//        print("\(type(of: self)): \(#function)")
+        return true
+    }
+    
+    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+//        print("\(type(of: self)): \(#function)")
+    }
+    
+    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+//        print("\(type(of: self)): \(#function)")
+    }
+    
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+//        print("\(type(of: self)): \(#function)")
+//        delegate?.viewDidDismiss()
     }
     
     
@@ -193,4 +226,14 @@ class ToDoViewController: UIViewController{
     }
     */
 
+}
+
+extension ToDoViewController {
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        super.dismiss(animated: flag, completion: completion)
+        guard let presentationController = presentationController else {
+            return
+        }
+        presentationController.delegate?.presentationControllerDidDismiss?(presentationController)
+    }
 }

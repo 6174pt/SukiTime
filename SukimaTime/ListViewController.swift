@@ -9,6 +9,8 @@ import UIKit
 
 class ListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
+    
+    
     @IBOutlet weak var table:UITableView!
     @IBOutlet weak var segmentedControl:UISegmentedControl!
     var array:[[Any]]=[[]]
@@ -38,6 +40,7 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         presentingViewController?.beginAppearanceTransition(false, animated: animated)
         super.viewWillAppear(animated)
         
+        
         table.reloadData()
         
         
@@ -45,13 +48,18 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+          super.viewDidAppear(animated)
+          
+        table.reloadData()
+      }
+    
+    
     
     @objc func set(){
         
         print("set")
         todoArray=saveData.object(forKey: "list") as! [[Any]]
-        print(todoArray)
-        print(todoArray.count)
         
         if todoArray.count >= 2 {
             if todoArray[0].isEmpty {
@@ -116,8 +124,6 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         default:
             set()
         }
-        print(array.count)
-        print(array)
         
         if todoArray.count >= 2{
             if array[0].isEmpty{
@@ -182,18 +188,13 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
                                        preferredStyle: .alert)
         dialog.addAction(UIAlertAction(title: "削除", style: .default, handler: { (_) in
             
-            print(self.array)
-            print(self.todoArray)
             
             for i in 0...Int(self.todoArray.count-1) {
-                print(self.array)
-                print(self.array[indexPath.row])
                 if (self.todoArray[i][0] as! String) == (self.array[indexPath.row][0] as! String) {
                     if (self.todoArray[i][1] as! String) == (self.array[indexPath.row][1] as! String){
                         if (self.todoArray[i][2] as! String) == (self.array[indexPath.row][2] as! String){
                             self.todoArray.remove(at: i)
                             self.saveData.set(self.todoArray, forKey: "list")
-                            print(self.todoArray)
                             self.array.remove(at: indexPath.row)
                             self.table.deleteRows(at: [indexPath], with: .automatic)
                             

@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-protocol TodoViewControllerProtocol {
-    func viewDidDismiss()
-}
+//protocol TodoViewControllerProtocol {
+//    func viewDidDismiss()
+//}
 
 class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDelegate{
     
@@ -87,6 +87,11 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
     override func viewDidAppear(_ animated: Bool) {
 //        print("\(type(of: self)): \(#function)")
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        presentingViewController?.beginAppearanceTransition(true, animated: animated)
+        presentingViewController?.endAppearanceTransition()
+    }
 
     
     func setNumber(){
@@ -117,7 +122,7 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
         }
     }
     
-    func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
+    /*func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
 //        print("\(type(of: self)): \(#function)")
         return true
     }
@@ -133,7 +138,7 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
 //        print("\(type(of: self)): \(#function)")
 //        delegate?.viewDidDismiss()
-    }
+    }*/
     
     
     @IBAction func dateChanged(_ sender: UIDatePicker) {
@@ -226,14 +231,4 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
     }
     */
 
-}
-
-extension ToDoViewController {
-    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
-        super.dismiss(animated: flag, completion: completion)
-        guard let presentationController = presentationController else {
-            return
-        }
-        presentationController.delegate?.presentationControllerDidDismiss?(presentationController)
-    }
 }

@@ -60,6 +60,7 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
         print("set")
         todoArray=saveData.object(forKey: "list") as! [[Any]]
+        print(todoArray)
         
         if todoArray.count >= 2 {
             if todoArray[0].isEmpty {
@@ -84,10 +85,13 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         }
         
         array=todoArray
+        
+        print(todoArray)
 
     }
     
     @objc func minutecheck(){
+        print("minutecheck")
         for i in 0...Int(todoArray.count-1){
             if Int(todoArray[i][1] as! String)! == 5{
                 checked5Array += [todoArray[i]]

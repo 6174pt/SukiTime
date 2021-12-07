@@ -10,6 +10,12 @@ import UIKit
 class ContainerViewController: UIViewController {
     
     @IBOutlet var button:UIButton!
+    let saveData:UserDefaults=UserDefaults.standard
+    var todoArray:[[Any]]=[[]]
+    var checked5Array:[[Any]]=[[]]
+    var checked10Array:[[Any]]=[[]]
+    var checked15Array:[[Any]]=[[]]
+    var checked30Array:[[Any]]=[[]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,14 +31,13 @@ class ContainerViewController: UIViewController {
     }
     
     
+    
     @IBAction func plus(_ sender: Any){
         // ①storyboardのインスタンス取得
         let storyboard: UIStoryboard = self.storyboard!
         
         // ②遷移先ViewControllerのインスタンス取得
         let nextView = storyboard.instantiateViewController(withIdentifier: "add") as! ToDoViewController
-        
-        nextView.presentationController?.delegate = self
         
         // ③画面遷移
         self.present(nextView, animated: true, completion: nil)
@@ -41,22 +46,6 @@ class ContainerViewController: UIViewController {
     
 }
 
-extension ContainerViewController: UIAdaptivePresentationControllerDelegate {
-    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        print("dismiss")
-        
-//        ListViewController().segmentedControl.selectedSegmentIndex = 0
-        ListViewController().set()
-        if ListViewController().todoArray.count >= 2{
-            if ListViewController().array[0].isEmpty{
-                ListViewController().array.removeFirst()
-            }
-        }
-        print(ListViewController().todoArray.count)
-        
-        ListViewController().table.reloadData()
-        }
-    }
 
 
 

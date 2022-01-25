@@ -12,6 +12,9 @@
 		556677612711AD6500B5ABE2 /* ToDoTVCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556677602711AD6500B5ABE2 /* ToDoTVCTableViewCell.swift */; };
 		556677662711AD9300B5ABE2 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556677652711AD9300B5ABE2 /* ListViewController.swift */; };
 		5566776B2711B77300B5ABE2 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566776A2711B77300B5ABE2 /* ContainerViewController.swift */; };
+		556D248D278D91DE00B577E6 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D248C278D91DE00B577E6 /* CarouselView.swift */; };
+		556D2492278D923F00B577E6 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D2491278D923F00B577E6 /* CarouselCell.swift */; };
+		556D249A278DA03A00B577E6 /* PagingPerCellFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D2499278DA03A00B577E6 /* PagingPerCellFlowLayout.swift */; };
 		557529E826AEF85900D38365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557529E726AEF85900D38365 /* AppDelegate.swift */; };
 		557529EA26AEF85900D38365 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557529E926AEF85900D38365 /* SceneDelegate.swift */; };
 		557529EC26AEF85900D38365 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557529EB26AEF85900D38365 /* ViewController.swift */; };
@@ -50,6 +53,9 @@
 		556677602711AD6500B5ABE2 /* ToDoTVCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTVCTableViewCell.swift; sourceTree = "<group>"; };
 		556677652711AD9300B5ABE2 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		5566776A2711B77300B5ABE2 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		556D248C278D91DE00B577E6 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		556D2491278D923F00B577E6 /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
+		556D2499278DA03A00B577E6 /* PagingPerCellFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingPerCellFlowLayout.swift; sourceTree = "<group>"; };
 		557529E426AEF85900D38365 /* SukimaTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SukimaTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		557529E726AEF85900D38365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		557529E926AEF85900D38365 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +142,9 @@
 				556677602711AD6500B5ABE2 /* ToDoTVCTableViewCell.swift */,
 				556677652711AD9300B5ABE2 /* ListViewController.swift */,
 				5566776A2711B77300B5ABE2 /* ContainerViewController.swift */,
+				556D248C278D91DE00B577E6 /* CarouselView.swift */,
+				556D2491278D923F00B577E6 /* CarouselCell.swift */,
+				556D2499278DA03A00B577E6 /* PagingPerCellFlowLayout.swift */,
 			);
 			path = SukimaTime;
 			sourceTree = "<group>";
@@ -295,11 +304,14 @@
 				55752A2026AEFD5F00D38365 /* SelectViewController.swift in Sources */,
 				55752A1B26AEF99600D38365 /* ToDoViewController.swift in Sources */,
 				556677662711AD9300B5ABE2 /* ListViewController.swift in Sources */,
+				556D248D278D91DE00B577E6 /* CarouselView.swift in Sources */,
 				55752A2526AEFFC300D38365 /* SuggestionViewController.swift in Sources */,
 				557529EC26AEF85900D38365 /* ViewController.swift in Sources */,
 				55752A3226B00AE500D38365 /* RunViewController.swift in Sources */,
 				557529E826AEF85900D38365 /* AppDelegate.swift in Sources */,
+				556D2492278D923F00B577E6 /* CarouselCell.swift in Sources */,
 				5566776B2711B77300B5ABE2 /* ContainerViewController.swift in Sources */,
+				556D249A278DA03A00B577E6 /* PagingPerCellFlowLayout.swift in Sources */,
 				557529EA26AEF85900D38365 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

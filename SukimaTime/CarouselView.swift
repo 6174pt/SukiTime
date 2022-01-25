@@ -8,18 +8,19 @@
 import UIKit
 
 class CarouselView: UICollectionView {
-    
-    var pageCount:Int = 5
     let isInfinity = true
     var cellItemsWidth: CGFloat = 0.0
     let colors:[UIColor] = [.blue,.yellow,.red,.green,.gray]
     let saveData:UserDefaults=UserDefaults.standard
+    var filteredArray:[[Any]]=[[]]
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
     let cellIdentifier = "carousel"
+    
+    
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -31,6 +32,8 @@ class CarouselView: UICollectionView {
             transformScale(cell: cell)
         }
         
+//        filteredArray=saveData.object(forKey: "filter") as! [[Any]]
+       
     }
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
@@ -38,6 +41,8 @@ class CarouselView: UICollectionView {
         self.delegate = self
         self.dataSource = self
         self.register(CarouselCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        filteredArray = [["f", 10, "2021/09/14"], ["k", 10, "2022/01/31"], ["j", 10, "2022/01/31"], ["j", 10, "2022/01/31"], ["j", 10, "2022/01/31"]]
+        filteredArray = filteredArray.compactMap { $0 }
     }
     
     convenience init(frame: CGRect) {
@@ -49,6 +54,9 @@ class CarouselView: UICollectionView {
         
         self.showsHorizontalScrollIndicator = false
         self.backgroundColor = UIColor.white
+        
+        filteredArray = [["f", 10, "2021/09/14"], ["k", 10, "2022/01/31"], ["j", 10, "2022/01/31"], ["j", 10, "2022/01/31"], ["j", 10, "2022/01/31"]]
+        filteredArray = filteredArray.compactMap { $0 }
     }
     
     func transformScale(cell: UICollectionViewCell) {
@@ -64,7 +72,7 @@ class CarouselView: UICollectionView {
     func scrollToFirstItem() {
         self.layoutIfNeeded()
         if isInfinity {
-            self.scrollToItem(at:IndexPath(row: self.pageCount, section: 0) , at: .centeredHorizontally, animated: false)
+            self.scrollToItem(at:IndexPath(row: self.filteredArray.count, section: 0) , at: .centeredHorizontally, animated: false)
         }
     }
     
@@ -80,42 +88,45 @@ extension CarouselView: UICollectionViewDelegate {
 extension CarouselView: UICollectionViewDataSource {
 //    セクションごとのセル数
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return isInfinity ? pageCount * 3 : pageCount
+//        return isInfinity ? filteredArray.count * 3 : filteredArray.count
+        return filteredArray.count
     }
     
 //    セルの設定
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:CarouselCell = dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CarouselCell
-        configureCell(cell: cell, indexPath: indexPath)
-//        cell.contentView.backgroundColor = UIColor.green
-       
+//        configureCell(cell: cell, indexPath: indexPath)
+        cell.contentView.backgroundColor = colors[indexPath.row]
+        
         return cell
     }
     
-    func configureCell(cell: CarouselCell,indexPath: IndexPath) {
-        // indexを修正する
-        let fixedIndex = isInfinity ? indexPath.row % pageCount : indexPath.row
+//    func configureCell(cell: CarouselCell,indexPath: IndexPath) {
+////        filteredArray=saveData.object(forKey: "filter") as! [[Any]]
+//        // indexを修正する
+//        let fixedIndex = isInfinity ? indexPath.row % filteredArray.count : indexPath.row
 //        cell.contentView.backgroundColor = colors[fixedIndex]
-        cell.contentView.layer.borderColor = colors[fixedIndex].cgColor
-        cell.countLabel.text = String(fixedIndex + 1)
-    }
-
+////        cell.contentView.layer.borderColor = colors[fixedIndex].cgColor
+//        print(fixedIndex)
+//
+//        cell.countLabel?.text = filteredArray[fixedIndex] as? String
+//    }
 }
 
 extension CarouselView: UIScrollViewDelegate {
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
+
         if isInfinity {
             if cellItemsWidth == 0.0 {
                 cellItemsWidth = floor(scrollView.contentSize.width / 3.0) // 表示したい要素群のwidthを計算
             }
-            
+
             if (scrollView.contentOffset.x <= 0.0) || (scrollView.contentOffset.x > cellItemsWidth * 2.0) { // スクロールした位置がしきい値を超えたら中央に戻す
                 scrollView.contentOffset.x = cellItemsWidth
             }
         }
-        
+
         // 画面内に表示されているセルを取得
 //        let cells = self.visibleCells
 //        for cell in cells {
@@ -123,5 +134,6 @@ extension CarouselView: UIScrollViewDelegate {
 //            transformScale(cell: cell)
 //        }
     }
+    
     
 }

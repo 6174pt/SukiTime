@@ -7,20 +7,15 @@
 
 import UIKit
 
-class CarouselView: UICollectionView {
-    let isInfinity = true
-    var cellItemsWidth: CGFloat = 0.0
-    let colors:[UIColor] = [.blue,.yellow,.red,.green,.gray]
+class CarouselView: UICollectionView{
+    
+    
+    
+    let cellIdentifier = "carousel"
+    let pageCount = 5
+    
     let saveData:UserDefaults=UserDefaults.standard
     var filteredArray:[[Any]]=[[]]
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-    let cellIdentifier = "carousel"
-    
-    
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -32,108 +27,127 @@ class CarouselView: UICollectionView {
             transformScale(cell: cell)
         }
         
-//        filteredArray=saveData.object(forKey: "filter") as! [[Any]]
-       
+        
+        
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         self.delegate = self
         self.dataSource = self
         self.register(CarouselCell.self, forCellWithReuseIdentifier: cellIdentifier)
-        filteredArray = [["f", 10, "2021/09/14"], ["k", 10, "2022/01/31"], ["j", 10, "2022/01/31"], ["j", 10, "2022/01/31"], ["j", 10, "2022/01/31"]]
-        filteredArray = filteredArray.compactMap { $0 }
+        
+        
+        
     }
+    
     
     convenience init(frame: CGRect) {
         let layout = PagingPerCellFlowLayout()
-        layout.itemSize = CGSize(width: 200, height: frame.height / 2)
+        layout.itemSize = CGSize(width: frame.width*0.8, height: frame.height / 2)
         layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 50, bottom: 16, right: 50)
+        
         
         self.init(frame: frame, collectionViewLayout: layout)
         
+        // 水平方向のスクロールバーを非表示にする
         self.showsHorizontalScrollIndicator = false
         self.backgroundColor = UIColor.white
         
-        filteredArray = [["f", 10, "2021/09/14"], ["k", 10, "2022/01/31"], ["j", 10, "2022/01/31"], ["j", 10, "2022/01/31"], ["j", 10, "2022/01/31"]]
-        filteredArray = filteredArray.compactMap { $0 }
     }
     
     func transformScale(cell: UICollectionViewCell) {
+        // 計算してスケールを変更する
         let cellCenter:CGPoint = self.convert(cell.center, to: nil) //セルの中心座標
         let screenCenterX:CGFloat = UIScreen.main.bounds.width / 2  //画面の中心座標x
-        let reductionRatio:CGFloat = -0.0005                        //縮小率
+        let cellCenterDisX:CGFloat = abs(screenCenterX - cellCenter.x)
+        let reductionRatio:CGFloat = -0.0009                        //縮小率
         let maxScale:CGFloat = 1                                    //最大値
-        let cellCenterDisX:CGFloat = abs(screenCenterX - cellCenter.x)   //中心までの距離
+//        let cellCenterDisX:CGFloat = screenCenterX - cellCenter.x   //中心までの距離
         let newScale = reductionRatio * cellCenterDisX + maxScale   //新しいスケール
         cell.transform = CGAffineTransform(scaleX:newScale, y:newScale)
     }
-    
-    func scrollToFirstItem() {
-        self.layoutIfNeeded()
-        if isInfinity {
-            self.scrollToItem(at:IndexPath(row: self.filteredArray.count, section: 0) , at: .centeredHorizontally, animated: false)
-        }
-    }
+
+
     
 }
-
-
-
 
 extension CarouselView: UICollectionViewDelegate {
     
 }
 
 extension CarouselView: UICollectionViewDataSource {
-//    セクションごとのセル数
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return isInfinity ? filteredArray.count * 3 : filteredArray.count
-        return filteredArray.count
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        filteredArray=saveData.object(forKey: "filter") as! [[Any]]
+        if filteredArray[0].isEmpty{
+            filteredArray.removeFirst()
+        }else{
+            
+        }
     }
     
-//    セルの設定
+    // セクションごとのセル数
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        filteredArray=saveData.object(forKey: "filter") as! [[Any]]
+        print(filteredArray)
+        
+        if filteredArray[0].isEmpty{
+            filteredArray.removeFirst()
+        }else{
+            
+        }
+        
+        if filteredArray[0].isEmpty{
+            return 0
+        }else{
+            return filteredArray.count
+        }
+    }
+    
+    // セルの設定
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell:CarouselCell = dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CarouselCell
-//        configureCell(cell: cell, indexPath: indexPath)
-        cell.contentView.backgroundColor = colors[indexPath.row]
+        let cell = dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CarouselCell
+        cell.contentView.backgroundColor = UIColor.white
+        cell.contentView.layer.cornerRadius = 10
+        cell.contentView.layer.shadowOffset = CGSize(width: 1,height: 1)
+        cell.contentView.layer.shadowColor = UIColor.gray.cgColor
+        cell.contentView.layer.shadowOpacity = 0.7
+        cell.contentView.layer.shadowRadius = 5
+        
+        
+        configureCell(cell: cell, indexPath: indexPath)
         
         return cell
     }
     
-//    func configureCell(cell: CarouselCell,indexPath: IndexPath) {
-////        filteredArray=saveData.object(forKey: "filter") as! [[Any]]
-//        // indexを修正する
-//        let fixedIndex = isInfinity ? indexPath.row % filteredArray.count : indexPath.row
-//        cell.contentView.backgroundColor = colors[fixedIndex]
-////        cell.contentView.layer.borderColor = colors[fixedIndex].cgColor
-//        print(fixedIndex)
-//
-//        cell.countLabel?.text = filteredArray[fixedIndex] as? String
-//    }
-}
+    func configureCell(cell: CarouselCell,indexPath: IndexPath) {
+        // indexを修正する
+        let index = indexPath.row
 
-extension CarouselView: UIScrollViewDelegate {
+        print(index)
+        
+        
+        cell.countLabel.text = filteredArray[index][0] as? String
+        cell.dateLabel.text = filteredArray[index][2] as? String
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
-        if isInfinity {
-            if cellItemsWidth == 0.0 {
-                cellItemsWidth = floor(scrollView.contentSize.width / 3.0) // 表示したい要素群のwidthを計算
-            }
-
-            if (scrollView.contentOffset.x <= 0.0) || (scrollView.contentOffset.x > cellItemsWidth * 2.0) { // スクロールした位置がしきい値を超えたら中央に戻す
-                scrollView.contentOffset.x = cellItemsWidth
-            }
-        }
-
-        // 画面内に表示されているセルを取得
-//        let cells = self.visibleCells
-//        for cell in cells {
-            // ここでセルのScaleを変更する
-//            transformScale(cell: cell)
-//        }
+//        print(cell.contentView.layer.shadowOffset)
     }
     
+    
+    
+    
+}
+
+extension CarouselView:UIScrollViewDelegate{
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+    }
     
 }

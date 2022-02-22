@@ -86,6 +86,7 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
         array=todoArray
         
+        print("todoArray")
         print(todoArray)
 
     }
@@ -145,11 +146,25 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
 //    tableviewのcellの数：
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(array)
         
-        if array[0].isEmpty{
+        if array.isEmpty{
             return 0
+        }
+        
+        if array.count >= 2{
+            if array[0].isEmpty{
+                array.removeFirst()
+                return array.count
+            }else{
+                return array.count
+            }
         }else{
-            return array.count
+            if array[0].isEmpty{
+                return 0
+            }else{
+                return 1
+            }
         }
         
     }

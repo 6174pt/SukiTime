@@ -7,7 +7,11 @@
 
 import UIKit
 
-class SuggestionViewController: UIViewController, CatchProtocol {
+class SuggestionViewController: UIViewController,CatchProtocol{
+    func catchData(id: Int) {
+        self.performSegue(withIdentifier: "Tameshi", sender: nil)
+    }
+    
     
     
 
@@ -28,6 +32,7 @@ class SuggestionViewController: UIViewController, CatchProtocol {
         presentingViewController?.beginAppearanceTransition(false, animated: animated)
         super.viewWillAppear(animated)
         
+
         let width = self.view.frame.width
         let height = self.view.frame.height
         carouselView = CarouselView(frame: CGRect(x:0, y:0, width:width, height:height))
@@ -47,16 +52,6 @@ class SuggestionViewController: UIViewController, CatchProtocol {
 
         filteredArray=saveData.object(forKey: "filter") as! [[Any]]
         print(filteredArray)
-
-        
-        /*decide.frame=CGRect(x: view.frame.size.width/2-170, y: view.frame.size.height/2+200, width: 340, height: 40)
-        decide.backgroundColor = UIColor(named: "Blue2")
-        decide.setTitleColor(UIColor.white, for: UIControl.State.normal)
-        decide.layer.cornerRadius = decide.frame.height/2
-        decide.layer.shadowOffset = CGSize(width: 3, height: 3 )
-        decide.layer.shadowOpacity = 0.5
-        decide.layer.shadowRadius = 10
-        decide.layer.shadowColor = UIColor.gray.cgColor*/
         
         // Do any additional setup after loading the view.
     }
@@ -72,13 +67,6 @@ class SuggestionViewController: UIViewController, CatchProtocol {
         
     }
     
-    func catchData(id : Int) {
-        if id == 0 {
-            print("成功")
-            self.performSegue(withIdentifier: "Tameshi", sender: nil)
-        }
-        
-    }
     
 
     /*

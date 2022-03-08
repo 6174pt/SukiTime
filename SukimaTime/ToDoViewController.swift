@@ -122,24 +122,6 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
         }
     }
     
-    /*func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
-//        print("\(type(of: self)): \(#function)")
-        return true
-    }
-    
-    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
-//        print("\(type(of: self)): \(#function)")
-    }
-    
-    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
-//        print("\(type(of: self)): \(#function)")
-    }
-    
-    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-//        print("\(type(of: self)): \(#function)")
-//        delegate?.viewDidDismiss()
-    }*/
-    
     
     @IBAction func dateChanged(_ sender: UIDatePicker) {
         self.dateTextField.text = self.format(date: datePicker.date)
@@ -185,6 +167,11 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
         timenumber = saveData.object(forKey: "time") as! Int
         datenumber = saveData.object(forKey: "date") as! Int
         judgeNumber()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        dateTextField.text = dateTextField.text
+        self.view.endEditing(true)
     }
     
     

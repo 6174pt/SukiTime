@@ -8,12 +8,9 @@
 import UIKit
 
 class SuggestionViewController: UIViewController,CatchProtocol{
-    func catchData(id: Int) {
-        self.performSegue(withIdentifier: "Tameshi", sender: nil)
-    }
     
     
-    
+    var id:Int = 0
 
     var index:Int=1
     var carouselView:CarouselView!
@@ -67,6 +64,26 @@ class SuggestionViewController: UIViewController,CatchProtocol{
         
     }
     
+    func catchData(id : Int) {
+        if id == 0 {
+            let baseVC = self
+             let storyboard = UIStoryboard(name: "Hoge", bundle: nil)
+             let vc = storyboard.instantiateViewController(withIdentifier: "Tameshi")
+             let next = vc
+             DispatchQueue.main.async {
+                 next.modalPresentationStyle = .fullScreen
+                 baseVC.present(next,animated: true)
+             }
+            
+        }
+            
+    }
+}
+        
+    
+    
+
+    
     
 
     /*
@@ -79,4 +96,4 @@ class SuggestionViewController: UIViewController,CatchProtocol{
     }
     */
 
-}
+

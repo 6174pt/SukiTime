@@ -123,6 +123,8 @@ extension CarouselView: UICollectionViewDataSource {
         
         configureCell(cell: cell, indexPath: indexPath)
         
+        cell.delegate = SuggestionViewController() as CatchProtocol
+        
         return cell
     }
     

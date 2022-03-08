@@ -17,6 +17,8 @@ class CarouselCell: UICollectionViewCell {
     var dateLabel:UILabel!
     var decide:UIButton!
     
+    var id:Int = 0
+    
     var delegate : CatchProtocol?
     
     required init?(coder aDecoder: NSCoder) {
@@ -85,7 +87,8 @@ class CarouselCell: UICollectionViewCell {
     
     @objc func tapButton(_ sender: UIButton){
             print("ボタン")
-        delegate?.catchData(id: 0)
+        delegate?.catchData(id:0)
+        
         
     }
     

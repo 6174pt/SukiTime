@@ -8,8 +8,7 @@
 import UIKit
 
 class SuggestionViewController: UIViewController,CatchProtocol{
-    
-    
+        
     var id:Int = 0
 
     var index:Int=1
@@ -66,14 +65,27 @@ class SuggestionViewController: UIViewController,CatchProtocol{
     
     func catchData(id : Int) {
         if id == 0 {
-            let baseVC = self
-             let storyboard = UIStoryboard(name: "Hoge", bundle: nil)
-             let vc = storyboard.instantiateViewController(withIdentifier: "Tameshi")
-             let next = vc
-             DispatchQueue.main.async {
-                 next.modalPresentationStyle = .fullScreen
-                 baseVC.present(next,animated: true)
-             }
+//             let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+//            performSegue(withIdentifier: "Run", sender: nil)
+            
+            /*print(filteredArray[index])
+            runArray += filteredArray[index]
+            saveData.set(runArray, forKey: "run")
+            print(runArray)
+            
+            let RunViewController = self.storyboard?.instantiateViewController(withIdentifier: "RunViewController") as! RunViewController
+            self.present(RunViewController, animated: true, completion: nil)*/
+            
+//            let vc = storyboard.instantiateInitialViewController() as? RunViewController
+//             let next = vc
+            
+//            next.modalPresentationStyle = .fullScreen
+//            self.present(next, animated: true)
+//            navigationController?.pushViewController(vc!, animated: true)
+//             DispatchQueue.main.async {
+
+//             }
             
         }
             

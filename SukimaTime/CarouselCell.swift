@@ -64,11 +64,11 @@ class CarouselCell: UICollectionViewCell {
                                   width:width - margin * 2,
                                   height:50)
 //        decide.center = self.contentView.center
-        decide.backgroundColor = .blue
+        decide.backgroundColor = UIColor(named: "Blue2")
         decide.setTitleColor(UIColor.white, for: UIControl.State.normal)
         decide.setTitle("Decide", for: .normal)
         decide.layer.borderWidth = 4  // 5
-        decide.layer.borderColor = UIColor.blue.cgColor  // 6
+        decide.layer.borderColor = UIColor(named: "Blue2")?.cgColor
  
         decide.layer.cornerRadius = 10  // 7
         

@@ -129,9 +129,12 @@ class RunViewController: UIViewController {
         presentingViewController?.beginAppearanceTransition(false, animated: animated)
         super.viewWillAppear(animated)
         
+        print("Run")
+        
         runArray = saveData.object(forKey: "run") as! [Any]
         print(runArray)
         print(runArray[1])
+        
         
         runtime = Int(runArray[1] as! String)! * 60
         firsttime = runtime

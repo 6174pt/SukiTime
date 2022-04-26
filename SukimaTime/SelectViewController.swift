@@ -36,57 +36,45 @@ class SelectViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         filteredArray=[[]]
-        print(filteredArray)
-        
-        saveData.register(defaults: ["list": [[]] ])
-        todoArray=saveData.object(forKey: "list") as! [[Any]]
-        
-        print(todoArray)
-        
-        if todoArray.count == 1{
-            label.isHidden=false
-            subLabel.isHidden=false
-        }else{
-            label.isHidden=true
-            subLabel.isHidden=true
-        }
         
         checked5Array=[[]]
         checked10Array=[[]]
         checked15Array=[[]]
         checked30Array=[[]]
         
-        if todoArray.count == 1{
-        }else{
-            if todoArray.count == 2{
-                for i in 1...1{
-                    if Int(todoArray[i][1] as! String)! == 5{
-                        checked5Array += [todoArray[i]]
-                    }
-                    if Int(todoArray[i][1] as! String)! == 10{
-                        checked10Array += [todoArray[i]]
-                    }
-                    if Int(todoArray[i][1] as! String)! == 15{
-                        checked15Array += [todoArray[i]]
-                    }
-                    if Int(todoArray[i][1] as! String)! == 30{
-                        checked30Array += [todoArray[i]]
-                    }
-                }
+        todoArray=saveData.object(forKey: "list") as! [[Any]]
+        
+        if todoArray.isEmpty{
+            todoArray=[[]]
+        }
+        
+        if todoArray[0].isEmpty{
+            if todoArray.count == 1{
+                
             }else{
-                for i in 1...Int(todoArray.count-1) {
-                    if Int(todoArray[i][1] as! String)! == 5 {
-                        checked5Array += [todoArray[i]]
-                    }
-                    if Int(todoArray[i][1] as! String)! == 10{
-                        checked10Array += [todoArray[i]]
-                    }
-                    if Int(todoArray[i][1] as! String)! == 15{
-                        checked15Array += [todoArray[i]]
-                    }
-                    if Int(todoArray[i][1] as! String)! == 30{
-                        checked30Array += [todoArray[i]]
-                    }
+                todoArray.removeFirst()
+            }
+        }
+        
+        if todoArray[0].isEmpty{
+            label.isHidden=false
+            subLabel.isHidden=false
+        }else{
+            label.isHidden=true
+            subLabel.isHidden=true
+            
+            for i in 0...Int(todoArray.count-1) {
+                if Int(todoArray[i][1] as! String)! == 5 {
+                    checked5Array += [todoArray[i]]
+                }
+                if Int(todoArray[i][1] as! String)! == 10{
+                    checked10Array += [todoArray[i]]
+                }
+                if Int(todoArray[i][1] as! String)! == 15{
+                    checked15Array += [todoArray[i]]
+                }
+                if Int(todoArray[i][1] as! String)! == 30{
+                    checked30Array += [todoArray[i]]
                 }
             }
         }
@@ -131,21 +119,16 @@ class SelectViewController: UIViewController {
         
         setButton(button: fiveminuts)
         fiveminuts.backgroundColor=UIColor(named: "Blue2")
-//        fiveminuts.frame=CGRect(x: view.frame.size.width/2-165, y: view.frame.size.height/2-165, width: 150, height: 150)
         
         setButton(button: tenminuts)
         tenminuts.backgroundColor=UIColor(named: "Blue1")
-//        tenminuts.frame=CGRect(x: view.frame.size.width/2+15, y: view.frame.size.height/2-165, width: 150, height: 150)
         
         setButton(button: fifteenminuts)
         fifteenminuts.backgroundColor=UIColor(named: "Blue1")
-//        fifteenminuts.frame=CGRect(x: view.frame.size.width/2-165, y: view.frame.size.height/2+15, width: 150, height: 150)
         
         setButton(button: thirtyminuts)
         thirtyminuts.backgroundColor=UIColor(named: "Blue2")
-//        thirtyminuts.frame=CGRect(x: view.frame.size.width/2+15, y: view.frame.size.height/2+15, width: 150, height: 150)
-        
-        
+
     }
     
     func setButton(button:UIButton!){

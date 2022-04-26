@@ -59,7 +59,12 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
     @objc func set(){
         
         print("set")
-        todoArray=saveData.object(forKey: "list") as! [[Any]]
+        if let todo = saveData.object(forKey: "list") {
+            todoArray = todo as! [[Any]]
+        } else {
+            
+        }
+        
         print(todoArray)
         
         if todoArray.count >= 2 {

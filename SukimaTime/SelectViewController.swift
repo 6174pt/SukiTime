@@ -42,7 +42,12 @@ class SelectViewController: UIViewController {
         checked15Array=[[]]
         checked30Array=[[]]
         
-        todoArray=saveData.object(forKey: "list") as! [[Any]]
+        if let todo = saveData.object(forKey: "list") {
+            todoArray = saveData.object(forKey: "list") as! [[Any]]
+        } else {
+            
+        }
+        
         
         if todoArray.isEmpty{
             todoArray=[[]]

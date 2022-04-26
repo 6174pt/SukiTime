@@ -15,7 +15,7 @@ import UIKit
 
 class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDelegate{
     
-//    var delegate: TodoViewControllerProtocol?
+    //    var delegate: TodoViewControllerProtocol?
     
     @IBOutlet weak var todoTextField:UITextField!
     @IBOutlet weak var timeSegmentedControl: UISegmentedControl!
@@ -31,11 +31,11 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
     var todoArray:[[Any]]=[[]]
     
     let saveData:UserDefaults=UserDefaults.standard
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        presentationController?.delegate = self
+        //        presentationController?.delegate = self
         
         saveData.register(defaults: ["list": [[]] ])
         todoArray=saveData.object(forKey: "list") as! [[Any]]
@@ -61,7 +61,7 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
         datePicker.datePickerMode = .date
         
         add.isEnabled=false
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -69,30 +69,33 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
         presentingViewController?.beginAppearanceTransition(false, animated: animated)
         super.viewWillAppear(animated)
         
-//        print("\(type(of: self)): \(#function)")
+        //        print("\(type(of: self)): \(#function)")
         
-        todoArray = saveData.object(forKey: "list") as! [[Any]]
-        
+        if let todo = saveData.object(forKey: "list") {
+            todoArray = saveData.object(forKey: "list") as! [[Any]]
+        } else {
+            
+        }
         setNumber()
         timeTextField.isEnabled=false
         dateTextField.isEnabled=false
         
-        }
-
+    }
+    
     
     override func viewDidLayoutSubviews() {
-            datePicker.subviews.forEach({ $0.subviews.forEach({ $0.removeFromSuperview() }) })
-        }
+        datePicker.subviews.forEach({ $0.subviews.forEach({ $0.removeFromSuperview() }) })
+    }
     
     override func viewDidAppear(_ animated: Bool) {
-//        print("\(type(of: self)): \(#function)")
+        //        print("\(type(of: self)): \(#function)")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         presentingViewController?.beginAppearanceTransition(true, animated: animated)
         presentingViewController?.endAppearanceTransition()
     }
-
+    
     
     func setNumber(){
         todoTextField.text=""
@@ -130,30 +133,30 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
         todonumber = saveData.object(forKey: "todo") as! Int
         timenumber = saveData.object(forKey: "time") as! Int
         judgeNumber()
-        }
+    }
     
     func format(date:Date)->String{
-            
-            let dateformatter = DateFormatter()
-            dateformatter.dateFormat = "yyyy/MM/dd"
-            let strDate = dateformatter.string(from: date)
-            
-            return strDate
-        }
+        
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "yyyy/MM/dd"
+        let strDate = dateformatter.string(from: date)
+        
+        return strDate
+    }
     
     @IBAction func tappedSegmentedControl(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-                case 0:
-                    self.timeTextField.text = "5"
-                case 1:
-                    self.timeTextField.text = "10"
-                case 2:
-                    self.timeTextField.text = "15"
-                case 3:
-                    self.timeTextField.text = "30"
-                default:
-                    self.timeTextField.text = "-"
-                }
+        case 0:
+            self.timeTextField.text = "5"
+        case 1:
+            self.timeTextField.text = "10"
+        case 2:
+            self.timeTextField.text = "15"
+        case 3:
+            self.timeTextField.text = "30"
+        default:
+            self.timeTextField.text = "-"
+        }
         timenumber=1
         saveData.set(timenumber, forKey: "time")
         todonumber = saveData.object(forKey: "todo") as! Int
@@ -170,7 +173,7 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        dateTextField.text = dateTextField.text
+        //        dateTextField.text = dateTextField.text
         self.view.endEditing(true)
     }
     
@@ -188,7 +191,7 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
             )
         )
         present(alert, animated: true, completion: nil)
-     print(todoArray)
+        print(todoArray)
     }
     
     @IBAction func modoru(){
@@ -207,15 +210,15 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
         print(todoArray)
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

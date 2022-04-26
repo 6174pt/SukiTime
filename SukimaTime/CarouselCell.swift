@@ -6,8 +6,9 @@
 //
 
 import UIKit
+
 protocol CatchProtocol {
-    func catchData(id:Int)
+    func goRunVC()
 }
 
 
@@ -87,7 +88,7 @@ class CarouselCell: UICollectionViewCell {
     
     @objc func tapButton(_ sender: UIButton){
             print("ボタン")
-        delegate?.catchData(id:0)
+        delegate?.goRunVC()
         
         
     }

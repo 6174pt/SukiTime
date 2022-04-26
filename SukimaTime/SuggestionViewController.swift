@@ -8,9 +8,9 @@
 import UIKit
 
 class SuggestionViewController: UIViewController,CatchProtocol{
-        
+    
     var id:Int = 0
-
+    
     var index:Int=1
     var carouselView:CarouselView!
     
@@ -18,17 +18,17 @@ class SuggestionViewController: UIViewController,CatchProtocol{
     var filteredArray:[[Any]]=[[]]
     var runArray:[Any]=[]
     
-//    @IBOutlet var decide:UIButton!
+    //    @IBOutlet var decide:UIButton!
     @IBOutlet var nextbutton:UIButton!
     @IBOutlet var prevbutton:UIButton!
-//    var decide:UIButton!
+    //    var decide:UIButton!
     
     
     override func viewWillAppear(_ animated: Bool) {
         presentingViewController?.beginAppearanceTransition(false, animated: animated)
         super.viewWillAppear(animated)
         
-
+        
         let width = self.view.frame.width
         let height = self.view.frame.height
         carouselView = CarouselView(frame: CGRect(x:0, y:0, width:width, height:height))
@@ -42,10 +42,10 @@ class SuggestionViewController: UIViewController,CatchProtocol{
     }
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         filteredArray=saveData.object(forKey: "filter") as! [[Any]]
         print(filteredArray)
         
@@ -53,7 +53,7 @@ class SuggestionViewController: UIViewController,CatchProtocol{
     }
     
     
-
+    
     
     @IBAction func determine(){
         print(filteredArray[index])
@@ -63,49 +63,55 @@ class SuggestionViewController: UIViewController,CatchProtocol{
         
     }
     
-    func catchData(id : Int) {
-        if id == 0 {
-//             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-//            performSegue(withIdentifier: "Run", sender: nil)
-            
-            /*print(filteredArray[index])
-            runArray += filteredArray[index]
-            saveData.set(runArray, forKey: "run")
-            print(runArray)
-            
-            let RunViewController = self.storyboard?.instantiateViewController(withIdentifier: "RunViewController") as! RunViewController
-            self.present(RunViewController, animated: true, completion: nil)*/
-            
-//            let vc = storyboard.instantiateInitialViewController() as? RunViewController
-//             let next = vc
-            
-//            next.modalPresentationStyle = .fullScreen
-//            self.present(next, animated: true)
-//            navigationController?.pushViewController(vc!, animated: true)
-//             DispatchQueue.main.async {
-
-//             }
-            
-        }
-            
-    }
-}
+    func goRunVC() {
         
-    
-    
-
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        //             let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        //            performSegue(withIdentifier: "Run", sender: nil)
+        
+        //print(filteredArray[index])
+//        runArray += filteredArray[index]
+//        saveData.set(runArray, forKey: "run")
+//        print(runArray)
+        
+//        let storyBoard: UIStoryboard = self.storyboard!
+        let storyBoard = UIStoryboard(name: "main", bundle: nil)
+        
+        let RunViewController = (storyboard?.instantiateViewController(identifier: "RunViewController"))!
+        self.present(RunViewController, animated: true, completion: nil)
+        //何個目のタスクがクリックされたかどうか、の値をここでRunVCに渡す。
+        
+        
+        
+        //            let vc = storyboard.instantiateInitialViewController() as? RunViewController
+        //             let next = vc
+        
+        //            next.modalPresentationStyle = .fullScreen
+        //            self.present(next, animated: true)
+        //            navigationController?.pushViewController(vc!, animated: true)
+        //             DispatchQueue.main.async {
+        
+        //             }
+        
     }
-    */
+    
+    
+}
+
+
+
+
+
+
+
+/*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using segue.destination.
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 

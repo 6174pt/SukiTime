@@ -10,12 +10,14 @@ import UIKit
 class RunViewController: UIViewController {
     
     let saveData:UserDefaults=UserDefaults.standard
+    var filteredArray:[[Any]]=[[]]
     var runArray:[Any]=[]
     var runtime:Int=0
     var firsttime:Int=0
     var middletime:Int=0
     var firstTimer = Timer()
     var secondTimer = Timer()
+    var indexnumber:Int=0
     
     let shape=CAShapeLayer()
     let startButton:UIButton=UIButton()
@@ -131,9 +133,15 @@ class RunViewController: UIViewController {
         
         print("Run")
         
-        runArray = saveData.object(forKey: "run") as! [Any]
+        
+        filteredArray = saveData.object(forKey: "filter") as! [[Any]]
+        
+        runArray += filteredArray[indexnumber]
+        
         print(runArray)
         print(runArray[1])
+        
+        saveData.set(filteredArray, forKey: "run")
         
         
         runtime = Int(runArray[1] as! String)! * 60

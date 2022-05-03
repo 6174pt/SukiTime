@@ -12,7 +12,6 @@ class CarouselView: UICollectionView{
     
     
     let cellIdentifier = "carousel"
-//    let pageCount = 5
     
     let saveData:UserDefaults=UserDefaults.standard
     var filteredArray:[[Any]]=[[]]

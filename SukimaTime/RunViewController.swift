@@ -136,12 +136,15 @@ class RunViewController: UIViewController {
         
         filteredArray = saveData.object(forKey: "filter") as! [[Any]]
         
+        print(filteredArray)
+        
         runArray += filteredArray[indexnumber]
         
         print(runArray)
         print(runArray[1])
         
-        saveData.set(filteredArray, forKey: "run")
+        saveData.register(defaults: ["run": [] ])
+        saveData.set(runArray, forKey: "run")
         
         
         runtime = Int(runArray[1] as! String)! * 60
@@ -153,14 +156,16 @@ class RunViewController: UIViewController {
         }
     
     @objc func firstCountDown(){
-        firsttime -= 1
+        
         let min = Int(firsttime/60)
         let sec = Int(firsttime) % 60
         timerLabel.text = String(format: "%02d:%02d", min,sec)
+        firsttime -= 1
         if firsttime == 0{
             firstTimer.invalidate()
             timerLabel.text="00:00"
         }
+        print(firsttime)
     }
     
     @objc func stopCountDown(){
@@ -174,19 +179,22 @@ class RunViewController: UIViewController {
     }
     
     @objc func secondCountDown(){
-        middletime -= 1
+        
         let min = Int(middletime/60)
         let sec = Int(middletime) % 60
         timerLabel.text = String(format: "%02d:%02d", min,sec)
+        middletime -= 1
         if middletime == 0{
             secondTimer.invalidate()
             timerLabel.text="00:00"
         }
         
+        
     }
     
     
     @objc func didTapStartButton(){
+        print("start")
         let animation=CABasicAnimation(keyPath: "strokeEnd")
         animation.toValue=1
         animation.duration = CFTimeInterval(runtime)
@@ -220,13 +228,15 @@ class RunViewController: UIViewController {
         shape.timeOffset=pausedTime
         stopButton.isHidden=true
         restartButton.isHidden=false
-//        あとで訂正
-        resetButton.isEnabled=false
+
+//        check!!
+        resetButton.isEnabled=true
         
         stopCountDown()
     }
     
     @objc func didTapRestartButton(){
+        print("restart")
         let pausedTime=shape.timeOffset
         shape.speed=1.0
         shape.timeOffset=0.0
@@ -249,14 +259,37 @@ class RunViewController: UIViewController {
         animation.fillMode = .forwards
         shape.add(animation,forKey: "animation")
         
+        
+        
+        
+        
         if firstTimer.isValid{
             firstTimer.invalidate()
         }
         if secondTimer.isValid{
             secondTimer.invalidate()
         }
-        middletime=runtime
-        secondTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(secondCountDown), userInfo: nil, repeats: true)
+        
+        shape.speed=0.0
+        
+        firsttime = 600
+        let min = Int(firsttime/60)
+        let sec = Int(firsttime) % 60
+        timerLabel.text = String(format: "%02d:%02d", min,sec)
+        
+        //firstTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(firstCountDown), userInfo: nil, repeats: true)
+        
+        
+//        firstCountDown()
+        
+        
+        
+        restartButton.isHidden=true
+        stopButton.isHidden=true
+        startButton.isHidden=false
+        
+//        middletime=runtime
+        
     }
 
     

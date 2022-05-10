@@ -24,7 +24,10 @@ class EndViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("End")
+        
         runArray=saveData.object(forKey: "run") as! [Any]
+        print(runArray)
         todoLabel.text=runArray[0] as? String
         timeLabel.text=runArray[1] as? String
         dateLabel.text=runArray[2] as? String
@@ -80,6 +83,7 @@ class EndViewController: UIViewController {
                         todoArray.remove(at: i)
                         saveData.set(todoArray, forKey: "list")
                         print(todoArray)
+                        print("delete")
                         break
                     }
                 }

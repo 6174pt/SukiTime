@@ -76,11 +76,12 @@ class SuggestionViewController: UIViewController,CatchProtocol,UICollectionViewD
         
         let RunViewController = (storyBoard.instantiateViewController(identifier: "RunViewController")) as! RunViewController
         
-        
+        //何個目のタスクがクリックされたかどうか、の値をここでRunVCに渡す。
         RunViewController.indexnumber = indexNumber
         
-        self.present(RunViewController, animated: true, completion: nil)
-        //何個目のタスクがクリックされたかどうか、の値をここでRunVCに渡す。
+//        self.present(RunViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(RunViewController, animated: true)
+        
         
         
     }

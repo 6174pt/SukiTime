@@ -62,7 +62,6 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
         
         add.isEnabled=false
         
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {

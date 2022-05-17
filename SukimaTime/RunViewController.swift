@@ -141,7 +141,7 @@ class RunViewController: UIViewController {
         runArray += filteredArray[indexnumber]
         
         print(runArray)
-        print(runArray[1])
+        
         
         saveData.register(defaults: ["run": [] ])
         saveData.set(runArray, forKey: "run")
@@ -155,6 +155,7 @@ class RunViewController: UIViewController {
         
         }
     
+//    一度目のスタートで呼び出す
     @objc func firstCountDown(){
         
         let min = Int(firsttime/60)
@@ -168,6 +169,7 @@ class RunViewController: UIViewController {
         print(firsttime)
     }
     
+//    ストップ
     @objc func stopCountDown(){
         if firstTimer.isValid{
             middletime = firsttime
@@ -178,6 +180,7 @@ class RunViewController: UIViewController {
         }
     }
     
+//    二度目以降のスタートで呼び出す
     @objc func secondCountDown(){
         
         let min = Int(middletime/60)
@@ -188,13 +191,14 @@ class RunViewController: UIViewController {
             secondTimer.invalidate()
             timerLabel.text="00:00"
         }
-        
+        print(middletime)
         
     }
     
-    
+//    一度目のスタート
     @objc func didTapStartButton(){
         print("start")
+        shape.speed=1.0
         let animation=CABasicAnimation(keyPath: "strokeEnd")
         animation.toValue=1
         animation.duration = CFTimeInterval(runtime)
@@ -202,6 +206,7 @@ class RunViewController: UIViewController {
         animation.isRemovedOnCompletion=false
         animation.fillMode = .forwards
         shape.add(animation,forKey: "animation")
+        print(runtime)
         
         timerLabel.isHidden=false
         firstTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(firstCountDown), userInfo: nil, repeats: true)
@@ -221,11 +226,11 @@ class RunViewController: UIViewController {
     }
     
 
-    
+//    ストップ
     @objc func didTapStopButton(){
         let pausedTime=shape.convertTime(CACurrentMediaTime(), from: nil)
         shape.speed=0.0
-        shape.timeOffset=pausedTime
+        shape.timeOffset = pausedTime
         stopButton.isHidden=true
         restartButton.isHidden=false
 
@@ -235,6 +240,7 @@ class RunViewController: UIViewController {
         stopCountDown()
     }
     
+//    二度目以降のスタート
     @objc func didTapRestartButton(){
         print("restart")
         let pausedTime=shape.timeOffset
@@ -251,56 +257,47 @@ class RunViewController: UIViewController {
         
     }
     
+//    リセット
     @objc func didTapResetButton(){
-        let animation=CABasicAnimation(keyPath: "strokeEnd")
-        animation.toValue=1
-        animation.duration = CFTimeInterval(runtime)
-        animation.isRemovedOnCompletion=false
-        animation.fillMode = .forwards
-        shape.add(animation,forKey: "animation")
+//        let animation=CABasicAnimation(keyPath: "strokeEnd")
+//        animation.toValue=1
+//        animation.duration = CFTimeInterval(runtime)
+//        animation.isRemovedOnCompletion=false
+//        animation.fillMode = .forwards
+//        shape.add(animation,forKey: "animation")
         
-        
-        
+//        タイマーが止まっているか
+//        止まっていなかったら止める
         
         
         if firstTimer.isValid{
             firstTimer.invalidate()
+            didTapStopButton()
         }
         if secondTimer.isValid{
             secondTimer.invalidate()
+            didTapStopButton()
         }
         
-        shape.speed=0.0
         
-        firsttime = 600
-        let min = Int(firsttime/60)
-        let sec = Int(firsttime) % 60
-        timerLabel.text = String(format: "%02d:%02d", min,sec)
-        
-        //firstTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(firstCountDown), userInfo: nil, repeats: true)
-        
-        
-//        firstCountDown()
-        
-        
-        
+        //shapeの位置をリセットする
+        shape.timeOffset = 0.0
+
         restartButton.isHidden=true
         stopButton.isHidden=true
         startButton.isHidden=false
         
-//        middletime=runtime
+        
+        
+
+        
+        firsttime = 600
+        
+        let min = Int(firsttime/60)
+        let sec = Int(firsttime) % 60
+        timerLabel.text = String(format: "%02d:%02d", min,sec)
+        
         
     }
-
-    
-    /*
-     // MARK: - Navigation
-     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

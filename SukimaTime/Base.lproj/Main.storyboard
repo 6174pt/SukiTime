@@ -129,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zSF-Gp-pon" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1246" y="789"/>
+            <point key="canvasLocation" x="1241" y="812"/>
         </scene>
         <!--Home-->
         <scene sceneID="xsC-xI-54c">
@@ -208,10 +208,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LLN-0c-FP4">
-                                <rect key="frame" x="20" y="221" width="374" height="400"/>
+                                <rect key="frame" x="20" y="171" width="374" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="bUF-5w-obu"/>
+                                    <constraint firstAttribute="height" constant="500" id="bUF-5w-obu"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -332,7 +332,7 @@
                                 </connections>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sF2-1f-GV2">
-                                <rect key="frame" x="30" y="641" width="354" height="45"/>
+                                <rect key="frame" x="30" y="691" width="354" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="stE-uP-6Re"/>
                                 </constraints>
@@ -403,18 +403,18 @@
         <scene sceneID="vXH-Ac-BDh">
             <objects>
                 <viewController storyboardIdentifier="SelectView" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jkO-be-zAt" customClass="SelectViewController" customModule="SukimaTime" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DT6-1p-zXY">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="DT6-1p-zXY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ToDoを追加してください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ZT-ZY-3TG">
-                                <rect key="frame" x="38.5" y="-137" width="173.5" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="ToDoを追加してください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ZT-ZY-3TG">
+                                <rect key="frame" x="38.5" y="311" width="173.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" name="Blue2"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pDx-NL-sfS">
-                                <rect key="frame" x="25" y="-79" width="200" height="158"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pDx-NL-sfS">
+                                <rect key="frame" x="25" y="369" width="200" height="158"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Nb9-pz-X2e">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="69"/>
@@ -468,8 +468,8 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please add ToDo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7c-Yu-NPw">
-                                <rect key="frame" x="51.5" y="-171" width="147" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Please add ToDo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7c-Yu-NPw">
+                                <rect key="frame" x="51.5" y="277" width="147" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -558,28 +558,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H0x-ye-m3U">
-                                <rect key="frame" x="20" y="268" width="374" height="360"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowIBColor">
-                                        <color key="value" systemColor="systemGrayColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
-                                        <real key="value" value="0.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
-                                        <size key="value" width="3" height="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehM-BM-TFo">
                                 <rect key="frame" x="30" y="486" width="354" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -628,8 +606,8 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhD-fX-eqC">
-                                <rect key="frame" x="30" y="648" width="354" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhD-fX-eqC">
+                                <rect key="frame" x="30" y="676" width="354" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="r3P-ga-WrD"/>
                                 </constraints>
@@ -647,8 +625,8 @@
                                 <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JB5-Yj-Gg6">
-                                <rect key="frame" x="30" y="713" width="354" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JB5-Yj-Gg6">
+                                <rect key="frame" x="30" y="729" width="354" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Q9Z-Cb-mLH"/>
                                 </constraints>
@@ -657,6 +635,28 @@
                                     <action selector="keep" destination="aQu-5X-eJa" eventType="touchUpInside" id="sXU-7i-sJw"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H0x-ye-m3U">
+                                <rect key="frame" x="20" y="237" width="374" height="450"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowIBColor">
+                                        <color key="value" systemColor="systemGrayColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="3" height="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="B3R-Ew-YNY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -696,7 +696,7 @@
                             <constraint firstItem="B3R-Ew-YNY" firstAttribute="trailing" secondItem="wOc-ld-jNG" secondAttribute="trailing" constant="30" id="raF-R7-3Nz"/>
                             <constraint firstItem="B3R-Ew-YNY" firstAttribute="trailing" secondItem="j1Y-ud-tBc" secondAttribute="trailing" constant="30" id="s1M-0d-PZF"/>
                             <constraint firstItem="WXU-2a-OCP" firstAttribute="leading" secondItem="B3R-Ew-YNY" secondAttribute="leading" constant="30" id="sbD-1I-4v5"/>
-                            <constraint firstItem="H0x-ye-m3U" firstAttribute="top" secondItem="B3R-Ew-YNY" secondAttribute="top" constant="180" id="uBJ-11-NW9"/>
+                            <constraint firstItem="H0x-ye-m3U" firstAttribute="top" secondItem="B3R-Ew-YNY" secondAttribute="top" constant="100" id="uBJ-11-NW9"/>
                             <constraint firstItem="y9K-e7-z8j" firstAttribute="leading" secondItem="B3R-Ew-YNY" secondAttribute="leading" constant="30" id="vow-HA-wjd"/>
                         </constraints>
                     </view>
@@ -712,7 +712,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0UX-tD-SN7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4080" y="94"/>
+            <point key="canvasLocation" x="4079.7101449275365" y="93.75"/>
         </scene>
         <!--Sukima Time Taba Bar Controller-->
         <scene sceneID="Tyh-x0-Kbb">

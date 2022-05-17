@@ -43,7 +43,7 @@ class CarouselCell: UICollectionViewCell {
         // 数字ラベルを設置する
         countLabel = UILabel()
         countLabel.frame = CGRect(x:margin,
-                                  y:margin,
+                                  y:margin * 3,
                                   width:width - margin * 2,
                                   height:50)
         countLabel.textAlignment = .center
@@ -52,7 +52,7 @@ class CarouselCell: UICollectionViewCell {
         
         dateLabel = UILabel()
         dateLabel.frame = CGRect(x:margin,
-                                  y:margin * 4,
+                                  y:margin * 5,
                                   width:width - margin * 2,
                                   height:50)
         dateLabel.textAlignment = .center
@@ -61,7 +61,7 @@ class CarouselCell: UICollectionViewCell {
         
         decide = UIButton()
         decide.frame = CGRect(x:margin,
-                                  y:margin * 10,
+                                  y:margin * 15,
                                   width:width - margin * 2,
                                   height:50)
 //        decide.center = self.contentView.center

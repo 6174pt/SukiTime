@@ -83,7 +83,7 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
     
     
     override func viewDidLayoutSubviews() {
-        datePicker.subviews.forEach({ $0.subviews.forEach({ $0.removeFromSuperview() }) })
+        //datePicker.subviews.forEach({ $0.subviews.forEach({ $0.removeFromSuperview() }) })
     }
     
     override func viewDidAppear(_ animated: Bool) {

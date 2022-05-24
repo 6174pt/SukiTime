@@ -28,17 +28,20 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
     var timenumber:Int=0
     var datenumber:Int=0
     
-    var todoArray:[[Any]]=[[]]
+    var todoArray:[[Any]] = []
+
     
+//    ユーザーデフォルトにアクセス
     let saveData:UserDefaults=UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        presentationController?.delegate = self
+//  　    presentationController?.delegate = self
+//        saveData.register(defaults: ["list": [[]] ])
         
-        saveData.register(defaults: ["list": [[]] ])
-        todoArray=saveData.object(forKey: "list") as! [[Any]]
+//        ユーザーデフォルトからtodoArrayを取り出す
+        //todoArray=saveData.object(forKey: "list") as! [[Any]]
         
         baseImageView.backgroundColor = .white
         baseImageView.frame=CGRect(x: view.frame.size.width/2-175, y: view.frame.size.height/2-175, width: 350, height: 350)
@@ -178,11 +181,11 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
     
     
     @IBAction func addData(){
+        print("Add")
         todoArray += [[todoTextField.text!, timeTextField.text!, dateTextField.text!]]
         saveData.set(todoArray, forKey: "list")
         setNumber()
         add.isEnabled=false
-        print(todonumber)
         let alert: UIAlertController = UIAlertController(title: "完了", message: "ToDoが追加されました", preferredStyle: .alert)
         alert.addAction(
             UIAlertAction(
@@ -190,7 +193,6 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
             )
         )
         present(alert, animated: true, completion: nil)
-        print(todoArray)
     }
     
     @IBAction func modoru(){
@@ -204,20 +206,10 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
     
     @IBAction func reset(){
         todoArray.removeAll()
-        todoArray += [[]]
+//        todoArray += [[]]
         saveData.set(todoArray, forKey: "list")
         print(todoArray)
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
 }

@@ -10,12 +10,12 @@ import UIKit
 class SelectViewController: UIViewController {
     
     let saveData:UserDefaults=UserDefaults.standard
-    var todoArray:[[Any]]=[[]]
-    var filteredArray:[[Any]]=[[]]
-    var checked5Array:[[Any]]=[[]]
-    var checked10Array:[[Any]]=[[]]
-    var checked15Array:[[Any]]=[[]]
-    var checked30Array:[[Any]]=[[]]
+    var todoArray:[[Any]]=[]
+    var filteredArray:[[Any]] = []
+    var checked5Array:[[Any]]=[]
+    var checked10Array:[[Any]]=[]
+    var checked15Array:[[Any]]=[]
+    var checked30Array:[[Any]]=[]
     
     @IBOutlet weak var fiveminuts:UIButton!
     @IBOutlet var tenminuts:UIButton!
@@ -25,17 +25,15 @@ class SelectViewController: UIViewController {
     @IBOutlet var subLabel:UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
-
-        presentingViewController?.beginAppearanceTransition(false, animated: animated)
-
+    presentingViewController?.beginAppearanceTransition(false, animated: animated)
         super.viewWillAppear(animated)
         
-        print("viewwillapper")
+        print("SelectVC/viewwillapper")
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        filteredArray=[[]]
+        filteredArray=[]
         
         checked5Array=[[]]
         checked10Array=[[]]
@@ -49,7 +47,7 @@ class SelectViewController: UIViewController {
         }
         
         
-        if todoArray.isEmpty{
+        /*if todoArray.isEmpty{
             todoArray=[[]]
         }
         
@@ -59,9 +57,9 @@ class SelectViewController: UIViewController {
             }else{
                 todoArray.removeFirst()
             }
-        }
+        }*/
         
-        if todoArray[0].isEmpty{
+        if todoArray.isEmpty{
             label.isHidden=false
             subLabel.isHidden=false
         }else{
@@ -148,14 +146,11 @@ class SelectViewController: UIViewController {
     
     @objc func get(){
         todoArray=saveData.object(forKey: "list") as! [[Any]]
-        print(todoArray)
-        todoArray.removeFirst()
-        print(todoArray)
     }
     
     @IBAction func five(){
         self.get()
-        for i in 0...Int(todoArray.count-1) {
+        for i in 0..<Int(todoArray.count) {
             if Int(todoArray[i][1] as! String)! == 5 {
                 filteredArray += [todoArray[i]]
                 saveData.set(filteredArray, forKey: "filter")
@@ -165,8 +160,9 @@ class SelectViewController: UIViewController {
     }
     
     @IBAction func ten(){
+        print("突っ込む前",todoArray.count)
         self.get()
-        for i in 0...Int(todoArray.count-1) {
+        for i in 0..<Int(todoArray.count) {
             if Int(todoArray[i][1] as! String)! == 10 {
                 filteredArray += [todoArray[i]]
                 saveData.set(filteredArray, forKey: "filter")
@@ -177,7 +173,7 @@ class SelectViewController: UIViewController {
     
     @IBAction func fifteen(){
         self.get()
-        for i in 0...Int(todoArray.count-1) {
+        for i in 0..<Int(todoArray.count) {
             if Int(todoArray[i][1] as! String)! == 15 {
                 filteredArray += [todoArray[i]]
                 saveData.set(filteredArray, forKey: "filter")
@@ -188,7 +184,7 @@ class SelectViewController: UIViewController {
     
     @IBAction func thirty(){
         self.get()
-        for i in 0...Int(todoArray.count-1) {
+        for i in 0..<Int(todoArray.count) {
             if Int(todoArray[i][1] as! String)! == 30 {
                 filteredArray += [todoArray[i]]
                 saveData.set(filteredArray, forKey: "filter")
@@ -196,16 +192,5 @@ class SelectViewController: UIViewController {
         }
         print(filteredArray)
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

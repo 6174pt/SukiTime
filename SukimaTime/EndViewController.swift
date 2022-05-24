@@ -28,6 +28,7 @@ class EndViewController: UIViewController {
         
         runArray=saveData.object(forKey: "run") as! [Any]
         print(runArray)
+        print("-----------------------------")
         todoLabel.text=runArray[0] as? String
         timeLabel.text=runArray[1] as? String
         dateLabel.text=runArray[2] as? String

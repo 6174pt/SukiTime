@@ -136,11 +136,13 @@ class RunViewController: UIViewController {
         
         filteredArray = saveData.object(forKey: "filter") as! [[Any]]
         
-        print(filteredArray)
+        print("filter",filteredArray)
+        
+        print("index",indexnumber)
         
         runArray += filteredArray[indexnumber]
         
-        print(runArray)
+        print("runArray", runArray)
         
         
         saveData.register(defaults: ["run": [] ])

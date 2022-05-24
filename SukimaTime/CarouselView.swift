@@ -131,7 +131,6 @@ extension CarouselView: UICollectionViewDataSource {
         // indexを修正する
         let index = indexPath.row
 
-        print(index)
         
         
         cell.countLabel.text = filteredArray[index][0] as? String

@@ -51,7 +51,6 @@ class EndViewController: UIViewController {
 //        retainbutton.frame=CGRect(x: view.frame.size.width/2-170, y: view.frame.size.height/2+215, width: 340, height: 40)
         retainbutton.layer.cornerRadius=retainbutton.frame.height/2
         
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,17 +95,5 @@ class EndViewController: UIViewController {
     @IBAction func keep(){
         self.navigationController?.popToRootViewController(animated: true)
     }
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

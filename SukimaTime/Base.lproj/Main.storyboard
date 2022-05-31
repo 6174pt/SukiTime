@@ -243,7 +243,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="QmR-5z-WtJ"/>
                                 </constraints>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -403,18 +403,18 @@
         <scene sceneID="vXH-Ac-BDh">
             <objects>
                 <viewController storyboardIdentifier="SelectView" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jkO-be-zAt" customClass="SelectViewController" customModule="SukimaTime" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DT6-1p-zXY">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="DT6-1p-zXY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ToDoを追加してください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ZT-ZY-3TG">
-                                <rect key="frame" x="38.5" y="-137" width="173.5" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="ToDoを追加してください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ZT-ZY-3TG">
+                                <rect key="frame" x="120.5" y="311" width="173.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" name="Blue2"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pDx-NL-sfS">
-                                <rect key="frame" x="25" y="-79" width="200" height="158"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pDx-NL-sfS">
+                                <rect key="frame" x="107" y="369" width="200" height="158"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Nb9-pz-X2e">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="69"/>
@@ -468,8 +468,8 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please add ToDo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7c-Yu-NPw">
-                                <rect key="frame" x="51.5" y="-171" width="147" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Please add ToDo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7c-Yu-NPw">
+                                <rect key="frame" x="133.5" y="277" width="147" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -606,16 +606,6 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhD-fX-eqC">
-                                <rect key="frame" x="30" y="676" width="354" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="r3P-ga-WrD"/>
-                                </constraints>
-                                <state key="normal" title="Todoを削除して終了"/>
-                                <connections>
-                                    <action selector="delete" destination="aQu-5X-eJa" eventType="touchUpInside" id="leJ-ta-BGy"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1Y-ud-tBc">
                                 <rect key="frame" x="30" y="448" width="354" height="0.0"/>
                                 <constraints>
@@ -625,8 +615,8 @@
                                 <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JB5-Yj-Gg6">
-                                <rect key="frame" x="30" y="729" width="354" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JB5-Yj-Gg6">
+                                <rect key="frame" x="30" y="721" width="354" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Q9Z-Cb-mLH"/>
                                 </constraints>
@@ -635,8 +625,8 @@
                                     <action selector="keep" destination="aQu-5X-eJa" eventType="touchUpInside" id="sXU-7i-sJw"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H0x-ye-m3U">
-                                <rect key="frame" x="20" y="237" width="374" height="450"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H0x-ye-m3U">
+                                <rect key="frame" x="20" y="260" width="374" height="376"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -657,6 +647,16 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhD-fX-eqC">
+                                <rect key="frame" x="30" y="656" width="354" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="r3P-ga-WrD"/>
+                                </constraints>
+                                <state key="normal" title="Todoを削除して終了"/>
+                                <connections>
+                                    <action selector="delete" destination="aQu-5X-eJa" eventType="touchUpInside" id="leJ-ta-BGy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="B3R-Ew-YNY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -665,6 +665,7 @@
                             <constraint firstItem="j1Y-ud-tBc" firstAttribute="centerY" secondItem="Uon-OA-at2" secondAttribute="centerY" id="6CZ-as-Ike"/>
                             <constraint firstItem="B3R-Ew-YNY" firstAttribute="trailing" secondItem="WXU-2a-OCP" secondAttribute="trailing" constant="30" id="6kh-bw-Z6E"/>
                             <constraint firstItem="Bsu-fa-2Qb" firstAttribute="leading" secondItem="B3R-Ew-YNY" secondAttribute="leading" constant="30" id="7sl-zA-1HM"/>
+                            <constraint firstItem="H0x-ye-m3U" firstAttribute="top" secondItem="B3R-Ew-YNY" secondAttribute="top" constant="172" id="87w-Hx-YGe"/>
                             <constraint firstItem="JB5-Yj-Gg6" firstAttribute="leading" secondItem="B3R-Ew-YNY" secondAttribute="leading" constant="30" id="8JQ-uk-dAn"/>
                             <constraint firstItem="ehM-BM-TFo" firstAttribute="leading" secondItem="B3R-Ew-YNY" secondAttribute="leading" constant="30" id="AKc-Lv-mH1"/>
                             <constraint firstItem="B3R-Ew-YNY" firstAttribute="trailing" secondItem="ehM-BM-TFo" secondAttribute="trailing" constant="30" id="AkX-ec-hUT"/>
@@ -681,7 +682,6 @@
                             <constraint firstItem="wOc-ld-jNG" firstAttribute="top" secondItem="3Ku-IF-Llh" secondAttribute="bottom" constant="10" id="Rph-mN-18h"/>
                             <constraint firstItem="WXU-2a-OCP" firstAttribute="top" secondItem="Bsu-fa-2Qb" secondAttribute="bottom" constant="10" id="Rpl-If-vzP"/>
                             <constraint firstItem="B3R-Ew-YNY" firstAttribute="trailing" secondItem="ceM-OE-jKM" secondAttribute="trailing" constant="30" id="UV3-gw-eHH"/>
-                            <constraint firstItem="jhD-fX-eqC" firstAttribute="top" secondItem="H0x-ye-m3U" secondAttribute="bottom" constant="20" id="Vip-v0-6jP"/>
                             <constraint firstItem="B3R-Ew-YNY" firstAttribute="trailing" secondItem="j4c-Ec-Gdr" secondAttribute="trailing" constant="30" id="bz6-d4-KZ9"/>
                             <constraint firstItem="B3R-Ew-YNY" firstAttribute="trailing" secondItem="y9K-e7-z8j" secondAttribute="trailing" constant="30" id="dno-dN-lmr"/>
                             <constraint firstItem="wOc-ld-jNG" firstAttribute="leading" secondItem="B3R-Ew-YNY" secondAttribute="leading" constant="30" id="eM4-Ik-pqu"/>
@@ -696,8 +696,8 @@
                             <constraint firstItem="B3R-Ew-YNY" firstAttribute="trailing" secondItem="wOc-ld-jNG" secondAttribute="trailing" constant="30" id="raF-R7-3Nz"/>
                             <constraint firstItem="B3R-Ew-YNY" firstAttribute="trailing" secondItem="j1Y-ud-tBc" secondAttribute="trailing" constant="30" id="s1M-0d-PZF"/>
                             <constraint firstItem="WXU-2a-OCP" firstAttribute="leading" secondItem="B3R-Ew-YNY" secondAttribute="leading" constant="30" id="sbD-1I-4v5"/>
-                            <constraint firstItem="H0x-ye-m3U" firstAttribute="top" secondItem="B3R-Ew-YNY" secondAttribute="top" constant="100" id="uBJ-11-NW9"/>
                             <constraint firstItem="y9K-e7-z8j" firstAttribute="leading" secondItem="B3R-Ew-YNY" secondAttribute="leading" constant="30" id="vow-HA-wjd"/>
+                            <constraint firstItem="jhD-fX-eqC" firstAttribute="top" secondItem="H0x-ye-m3U" secondAttribute="bottom" constant="20" id="zXL-1u-UUD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="End" id="2Zg-ZR-aBf"/>

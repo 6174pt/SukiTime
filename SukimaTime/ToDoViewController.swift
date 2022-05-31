@@ -9,13 +9,7 @@
 import Foundation
 import UIKit
 
-//protocol TodoViewControllerProtocol {
-//    func viewDidDismiss()
-//}
-
 class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDelegate{
-    
-    //    var delegate: TodoViewControllerProtocol?
     
     @IBOutlet weak var todoTextField:UITextField!
     @IBOutlet weak var timeSegmentedControl: UISegmentedControl!
@@ -30,18 +24,12 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
     
     var todoArray:[[Any]] = []
 
-    
-//    ユーザーデフォルトにアクセス
+    //    ユーザーデフォルトにアクセス
     let saveData:UserDefaults=UserDefaults.standard
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//  　    presentationController?.delegate = self
-//        saveData.register(defaults: ["list": [[]] ])
-        
-//        ユーザーデフォルトからtodoArrayを取り出す
-        //todoArray=saveData.object(forKey: "list") as! [[Any]]
         
         baseImageView.backgroundColor = .white
         baseImageView.frame=CGRect(x: view.frame.size.width/2-175, y: view.frame.size.height/2-175, width: 350, height: 350)
@@ -67,11 +55,11 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
         
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         presentingViewController?.beginAppearanceTransition(false, animated: animated)
         super.viewWillAppear(animated)
         
-        //        print("\(type(of: self)): \(#function)")
         
         if let todo = saveData.object(forKey: "list") {
             todoArray = saveData.object(forKey: "list") as! [[Any]]
@@ -89,20 +77,19 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
         //datePicker.subviews.forEach({ $0.subviews.forEach({ $0.removeFromSuperview() }) })
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        //        print("\(type(of: self)): \(#function)")
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         presentingViewController?.beginAppearanceTransition(true, animated: animated)
         presentingViewController?.endAppearanceTransition()
     }
     
     
+//    項目のリセット
     func setNumber(){
+//        項目欄のリセット
         todoTextField.text=""
         timeTextField.text=""
         dateTextField.text=""
+//        すべての項目が未入力の状態である
         todonumber=0
         timenumber=0
         datenumber=0
@@ -111,6 +98,8 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
         saveData.set(datenumber, forKey: "date")
     }
     
+    
+//    未入力項目がある時のAddボタンの無効化
     func judgeNumber(){
         if todonumber == 0{
             add.isEnabled=false
@@ -128,8 +117,11 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
     }
     
     
+//    日付入力
     @IBAction func dateChanged(_ sender: UIDatePicker) {
         self.dateTextField.text = self.format(date: datePicker.date)
+        
+//        日付欄は入力済みである
         datenumber=1
         saveData.set(datenumber, forKey: "date")
         todonumber = saveData.object(forKey: "todo") as! Int
@@ -137,6 +129,8 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
         judgeNumber()
     }
     
+    
+//    日付の表示フォーマット
     func format(date:Date)->String{
         
         let dateformatter = DateFormatter()
@@ -146,6 +140,8 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
         return strDate
     }
     
+    
+//    分数選択
     @IBAction func tappedSegmentedControl(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -159,6 +155,7 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
         default:
             self.timeTextField.text = "-"
         }
+//        分数欄は入力済みである
         timenumber=1
         saveData.set(timenumber, forKey: "time")
         todonumber = saveData.object(forKey: "todo") as! Int
@@ -166,6 +163,8 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
         judgeNumber()
     }
     
+    
+//    Todo名
     @IBAction func todoEditChanged(_ sender: Any) {
         todonumber=1
         saveData.set(todonumber, forKey: "todo")
@@ -174,16 +173,19 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
         judgeNumber()
     }
     
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //        dateTextField.text = dateTextField.text
         self.view.endEditing(true)
     }
     
-    
+        
+//    Todoの追加
     @IBAction func addData(){
         print("Add")
         todoArray += [[todoTextField.text!, timeTextField.text!, dateTextField.text!]]
         saveData.set(todoArray, forKey: "list")
+//        項目のリセット
         setNumber()
         add.isEnabled=false
         let alert: UIAlertController = UIAlertController(title: "完了", message: "ToDoが追加されました", preferredStyle: .alert)
@@ -195,20 +197,11 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
         present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func modoru(){
-        self.dismiss(animated: true, completion: nil)
-    }
     
-    @IBAction func get(){
-        todoArray=saveData.object(forKey: "list") as! [[Any]]
-        print(todoArray)
-    }
-    
+//    Todo全削除
     @IBAction func reset(){
         todoArray.removeAll()
-//        todoArray += [[]]
         saveData.set(todoArray, forKey: "list")
-        print(todoArray)
     }
 
     

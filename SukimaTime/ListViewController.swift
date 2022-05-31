@@ -13,14 +13,13 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
     @IBOutlet weak var table:UITableView!
     @IBOutlet weak var segmentedControl:UISegmentedControl!
-    var array:[[Any]]=[[]]
-//    var minuteArray:[[Any]] = [[]]
+    var array:[[Any]]=[]
     let saveData:UserDefaults=UserDefaults.standard
     var todoArray:[[Any]]=[[]]
-    var checked5Array:[[Any]]=[[]]
-    var checked10Array:[[Any]]=[[]]
-    var checked15Array:[[Any]]=[[]]
-    var checked30Array:[[Any]]=[[]]
+    var checked5Array:[[Any]]=[]
+    var checked10Array:[[Any]]=[]
+    var checked15Array:[[Any]]=[]
+    var checked30Array:[[Any]]=[]
     
 
     override func viewDidLoad() {
@@ -33,7 +32,7 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
         table.separatorStyle = .none
         table.showsVerticalScrollIndicator=false
-        // Do any additional setup after loading the view.
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,40 +64,20 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
             
         }
         
-        print(todoArray)
+        checked5Array = []
+        checked10Array = []
+        checked15Array = []
+        checked30Array = []
         
-        if todoArray.count >= 2 {
-            if todoArray[0].isEmpty {
-                todoArray.removeFirst()
-            }
-        }
-        
-        checked5Array = [[]]
-        checked10Array = [[]]
-        checked15Array = [[]]
-        checked30Array = [[]]
-        
-        if todoArray.count == 1{
-            if todoArray[0].isEmpty{
-            }else{
-                minutecheck()
-            }
-        }
-        
-        if todoArray.count >= 2{
-            minutecheck()
-        }
+        minutecheck()
         
         array=todoArray
-        
-        print("todoArray")
-        print(todoArray)
 
     }
     
     @objc func minutecheck(){
         print("minutecheck")
-        for i in 0...Int(todoArray.count-1){
+        for i in 0..<Int(todoArray.count){
             if Int(todoArray[i][1] as! String)! == 5{
                 checked5Array += [todoArray[i]]
             }
@@ -135,12 +114,6 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
             set()
         }
         
-        if todoArray.count >= 2{
-            if array[0].isEmpty{
-                array.removeFirst()
-            }
-        }
-        
         table.reloadData()
     }
     
@@ -151,33 +124,14 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
 //    tableviewのcellの数：
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(array)
         
-        if array.isEmpty{
-            return 0
-        }
-        
-        if array.count >= 2{
-            if array[0].isEmpty{
-                array.removeFirst()
-                return array.count
-            }else{
-                return array.count
-            }
-        }else{
-            if array[0].isEmpty{
-                return 0
-            }else{
-                return 1
-            }
-        }
+        return array.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell=table.dequeueReusableCell(withIdentifier: "Cell") as! ToDoTVCTableViewCell
         
-        print(array)
         cell.todoView.layer.cornerRadius=cell.todoView.frame.height/4
         cell.todoView.layer.shadowOffset = CGSize(width: 1, height: 1 )
         cell.todoView.layer.shadowOpacity = 0.2
@@ -213,7 +167,7 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         dialog.addAction(UIAlertAction(title: "削除", style: .default, handler: { (_) in
             
             
-            for i in 0...Int(self.todoArray.count-1) {
+            for i in 0..<Int(self.todoArray.count) {
                 if (self.todoArray[i][0] as! String) == (self.array[indexPath.row][0] as! String) {
                     if (self.todoArray[i][1] as! String) == (self.array[indexPath.row][1] as! String){
                         if (self.todoArray[i][2] as! String) == (self.array[indexPath.row][2] as! String){
@@ -233,16 +187,5 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         dialog.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
         self.present(dialog, animated: true, completion: nil)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

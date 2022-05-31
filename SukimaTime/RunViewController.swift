@@ -10,7 +10,7 @@ import UIKit
 class RunViewController: UIViewController {
     
     let saveData:UserDefaults=UserDefaults.standard
-    var filteredArray:[[Any]]=[[]]
+    var filteredArray:[[Any]]=[]
     var runArray:[Any]=[]
     var runtime:Int=0
     var firsttime:Int=0
@@ -131,19 +131,10 @@ class RunViewController: UIViewController {
         presentingViewController?.beginAppearanceTransition(false, animated: animated)
         super.viewWillAppear(animated)
         
-        print("Run")
-        
-        
         filteredArray = saveData.object(forKey: "filter") as! [[Any]]
         
-        print("filter",filteredArray)
-        
-        print("index",indexnumber)
-        
         runArray += filteredArray[indexnumber]
-        
-        print("runArray", runArray)
-        
+        print(runArray)
         
         saveData.register(defaults: ["run": [] ])
         saveData.set(runArray, forKey: "run")
@@ -168,7 +159,6 @@ class RunViewController: UIViewController {
             firstTimer.invalidate()
             timerLabel.text="00:00"
         }
-        print(firsttime)
     }
     
 //    ストップ
@@ -193,13 +183,10 @@ class RunViewController: UIViewController {
             secondTimer.invalidate()
             timerLabel.text="00:00"
         }
-        print(middletime)
-        
     }
     
 //    一度目のスタート
     @objc func didTapStartButton(){
-        print("start")
         shape.speed=1.0
         let animation=CABasicAnimation(keyPath: "strokeEnd")
         animation.toValue=1
@@ -261,17 +248,8 @@ class RunViewController: UIViewController {
     
 //    リセット
     @objc func didTapResetButton(){
-//        let animation=CABasicAnimation(keyPath: "strokeEnd")
-//        animation.toValue=1
-//        animation.duration = CFTimeInterval(runtime)
-//        animation.isRemovedOnCompletion=false
-//        animation.fillMode = .forwards
-//        shape.add(animation,forKey: "animation")
         
-//        タイマーが止まっているか
-//        止まっていなかったら止める
-        
-        
+        //タイマーが止まっていなかったら止める
         if firstTimer.isValid{
             firstTimer.invalidate()
             didTapStopButton()
@@ -281,7 +259,6 @@ class RunViewController: UIViewController {
             didTapStopButton()
         }
         
-        
         //shapeの位置をリセットする
         shape.timeOffset = 0.0
 
@@ -289,17 +266,12 @@ class RunViewController: UIViewController {
         stopButton.isHidden=true
         startButton.isHidden=false
         
-        
-        
-
-        
         firsttime = 600
         
         let min = Int(firsttime/60)
         let sec = Int(firsttime) % 60
         timerLabel.text = String(format: "%02d:%02d", min,sec)
-        
-        
+        timerLabel.isHidden = true
     }
 
 }

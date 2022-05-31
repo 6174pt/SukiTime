@@ -28,17 +28,15 @@ class SelectViewController: UIViewController {
     presentingViewController?.beginAppearanceTransition(false, animated: animated)
         super.viewWillAppear(animated)
         
-        print("SelectVC/viewwillapper")
-        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         filteredArray=[]
         
-        checked5Array=[[]]
-        checked10Array=[[]]
-        checked15Array=[[]]
-        checked30Array=[[]]
+        checked5Array=[]
+        checked10Array=[]
+        checked15Array=[]
+        checked30Array=[]
         
         if let todo = saveData.object(forKey: "list") {
             todoArray = saveData.object(forKey: "list") as! [[Any]]
@@ -46,19 +44,9 @@ class SelectViewController: UIViewController {
             
         }
         
+        print("todoarray",todoArray)
         
-        /*if todoArray.isEmpty{
-            todoArray=[[]]
-        }
-        
-        if todoArray[0].isEmpty{
-            if todoArray.count == 1{
-                
-            }else{
-                todoArray.removeFirst()
-            }
-        }*/
-        
+//        Todoが無い時「Todoを追加してください」表示
         if todoArray.isEmpty{
             label.isHidden=false
             subLabel.isHidden=false
@@ -66,7 +54,7 @@ class SelectViewController: UIViewController {
             label.isHidden=true
             subLabel.isHidden=true
             
-            for i in 0...Int(todoArray.count-1) {
+            for i in 0..<Int(todoArray.count) {
                 if Int(todoArray[i][1] as! String)! == 5 {
                     checked5Array += [todoArray[i]]
                 }
@@ -83,7 +71,7 @@ class SelectViewController: UIViewController {
         }
         
         
-        if checked5Array.count == 1{
+        if checked5Array.count == 0{
             fiveminuts.isEnabled=false
             fiveminuts.alpha=0.5
         }else{
@@ -91,7 +79,7 @@ class SelectViewController: UIViewController {
             fiveminuts.alpha=1.0
         }
         
-        if checked10Array.count == 1{
+        if checked10Array.count == 0{
             tenminuts.isEnabled=false
             tenminuts.alpha=0.5
         }else{
@@ -99,7 +87,7 @@ class SelectViewController: UIViewController {
             tenminuts.alpha=1.0
         }
         
-        if checked15Array.count == 1{
+        if checked15Array.count == 0{
             fifteenminuts.isEnabled=false
             fifteenminuts.alpha=0.5
         }else{
@@ -107,7 +95,7 @@ class SelectViewController: UIViewController {
             fifteenminuts.alpha=1.0
         }
         
-        if checked30Array.count == 1{
+        if checked30Array.count == 0{
             thirtyminuts.isEnabled=false
             thirtyminuts.alpha=0.5
         }else{
@@ -156,11 +144,9 @@ class SelectViewController: UIViewController {
                 saveData.set(filteredArray, forKey: "filter")
             }
         }
-        print(filteredArray)
     }
     
     @IBAction func ten(){
-        print("突っ込む前",todoArray.count)
         self.get()
         for i in 0..<Int(todoArray.count) {
             if Int(todoArray[i][1] as! String)! == 10 {
@@ -168,7 +154,6 @@ class SelectViewController: UIViewController {
                 saveData.set(filteredArray, forKey: "filter")
             }
         }
-        print(filteredArray)
     }
     
     @IBAction func fifteen(){
@@ -179,7 +164,6 @@ class SelectViewController: UIViewController {
                 saveData.set(filteredArray, forKey: "filter")
             }
         }
-        print(filteredArray)
     }
     
     @IBAction func thirty(){
@@ -190,7 +174,6 @@ class SelectViewController: UIViewController {
                 saveData.set(filteredArray, forKey: "filter")
             }
         }
-        print(filteredArray)
     }
     
 }

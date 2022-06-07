@@ -39,11 +39,16 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         presentingViewController?.beginAppearanceTransition(false, animated: animated)
         super.viewWillAppear(animated)
         
+        print("array",array)
+        
         
         table.reloadData()
         
         
         set()
+        
+//        ???
+        table.reloadData()
         
     }
     
@@ -138,6 +143,7 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         cell.todoView.layer.shadowRadius = 10
         cell.todoView.layer.shadowColor = UIColor.gray.cgColor
         cell.todoimg.layer.cornerRadius=cell.todoimg.frame.height/2
+        print("indexPath",indexPath)
         cell.todoLabel?.text = array[indexPath.row][0] as? String
         cell.dateLabel?.text = array[indexPath.row][2] as? String
         cell.minuteLabel?.text = array[indexPath.row][1] as? String
@@ -158,6 +164,10 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         action.backgroundColor = .red
         let configuration = UISwipeActionsConfiguration(actions: [action])
         return configuration
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        table.deselectRow(at: indexPath, animated: true)
     }
     
     func showAlert(deleteIndexPath indexPath: IndexPath) {

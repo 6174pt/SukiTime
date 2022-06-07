@@ -9,7 +9,7 @@ import UIKit
 
 class CarouselView: UICollectionView{
     
-    
+    var id:Int = 0
     
     let cellIdentifier = "carousel"
     
@@ -36,11 +36,6 @@ class CarouselView: UICollectionView{
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
-        self.delegate = self
-        self.dataSource = self
-        self.register(CarouselCell.self, forCellWithReuseIdentifier: cellIdentifier)
-        
-        
         
     }
     
@@ -72,82 +67,11 @@ class CarouselView: UICollectionView{
         cell.transform = CGAffineTransform(scaleX:newScale, y:newScale)
     }
 
-
-    
-}
-
-extension CarouselView: UICollectionViewDelegate {
-    
-}
-
-extension CarouselView: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        filteredArray=saveData.object(forKey: "filter") as! [[Any]]
-        if filteredArray[0].isEmpty{
-            filteredArray.removeFirst()
-        }else{
-            
-        }
-    }
-    
-    // セクションごとのセル数
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        filteredArray=saveData.object(forKey: "filter") as! [[Any]]
-        print(filteredArray)
+    func scrollToFirstItem(){
+        self.layoutIfNeeded()
         
-        if filteredArray[0].isEmpty{
-            filteredArray.removeFirst()
-        }else{
-            
-        }
-        
-        if filteredArray[0].isEmpty{
-            return 0
-        }else{
-            return filteredArray.count
-        }
-    }
-    
-    // セルの設定
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CarouselCell
-        cell.contentView.backgroundColor = UIColor.white
-        cell.contentView.layer.cornerRadius = 10
-        cell.contentView.layer.shadowOffset = CGSize(width: 1,height: 1)
-        cell.contentView.layer.shadowColor = UIColor.gray.cgColor
-        cell.contentView.layer.shadowOpacity = 0.7
-        cell.contentView.layer.shadowRadius = 5
-        
-        
-        configureCell(cell: cell, indexPath: indexPath)
-        
-        cell.delegate = SuggestionViewController() as CatchProtocol
-        
-        return cell
-    }
-    
-    func configureCell(cell: CarouselCell,indexPath: IndexPath) {
-        // indexを修正する
-        let index = indexPath.row
-
-        
-        
-        cell.countLabel.text = filteredArray[index][0] as? String
-        cell.dateLabel.text = filteredArray[index][2] as? String
-
-//        print(cell.contentView.layer.shadowOffset)
-    }
-    
-    
-    
-    
-}
-
-extension CarouselView:UIScrollViewDelegate{
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
+        self.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
     }
     
 }
+

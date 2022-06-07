@@ -7,15 +7,20 @@
 
 import UIKit
 
-class SuggestionViewController: UIViewController,CatchProtocol,UICollectionViewDataSource{
+class SuggestionViewController: UIViewController, UICollectionViewDataSource{
     
-    var index:Int=0
-    var carouselView:CarouselView!
+    var index:Int=1
+    var carouselView: CarouselView! {
+        didSet{
+            carouselView.dataSource = self
+            carouselView.register(CarouselCell.self, forCellWithReuseIdentifier: "carousel")
+        }
+    }
     
     let saveData:UserDefaults=UserDefaults.standard
     var filteredArray:[[Any]]=[]
     var runArray:[Any]=[]
-    var indexNumber:Int!
+   // var indexNumber:Int!
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,14 +30,17 @@ class SuggestionViewController: UIViewController,CatchProtocol,UICollectionViewD
 //        CarouselView(CollectionView)
         let width = self.view.frame.width
         let height = self.view.frame.height
+        
         carouselView = CarouselView(frame: CGRect(x:0, y:0, width:width, height:height))
+        
         carouselView.dataSource = self
         carouselView.center = CGPoint(x:width / 2,y: height / 2)
+        carouselView.scrollToFirstItem()
         self.view.addSubview(carouselView)
         
         
         
-        filteredArray=saveData.object(forKey: "filter") as! [[Any]]
+        filteredArray = saveData.object(forKey: "filter") as! [[Any]]
         
     }
     
@@ -46,18 +54,7 @@ class SuggestionViewController: UIViewController,CatchProtocol,UICollectionViewD
     }
     
     
-    func goRunVC() {
-        
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let RunViewController = (storyBoard.instantiateViewController(identifier: "RunViewController")) as! RunViewController
-        
-        //何個目のタスクがクリックされたかどうか、の値をここでRunVCに渡す。
-        RunViewController.indexnumber = indexNumber
-        
-        self.navigationController?.pushViewController(RunViewController, animated: true)
-        
-        }
+    
     
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -83,30 +80,46 @@ class SuggestionViewController: UIViewController,CatchProtocol,UICollectionViewD
         cell.contentView.layer.shadowColor = UIColor.gray.cgColor
         cell.contentView.layer.shadowOpacity = 0.7
         cell.contentView.layer.shadowRadius = 5
+        cell.id = indexPath.row
         
         
-        configureCell(cell: cell, indexPath: indexPath)
+        cell.countLabel.text = filteredArray[indexPath.row][0] as? String
+        cell.dateLabel.text = filteredArray[indexPath.row][2] as? String
         
         cell.delegate = self
         
         return cell
     }
     
-    func configureCell(cell: CarouselCell,indexPath: IndexPath) {
-        // indexを修正する
-        let index = indexPath.row
-        print(filteredArray[index])
-        indexNumber = indexPath.row
-
-        print("indexPath",index)
-        print(filteredArray[indexNumber])
-        print("--------------------------------------------")
-        
-        
-        cell.countLabel.text = filteredArray[index][0] as? String
-        cell.dateLabel.text = filteredArray[index][2] as? String
-
-    }
-    
     
 }
+
+extension SuggestionViewController: CatchProtocol {
+    
+    func goRunVC(taskId: Int) {
+
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+
+        let runViewController = (storyBoard.instantiateViewController(identifier: "RunViewController")) as! RunViewController
+        runViewController.indexnumber = taskId
+
+//        self.present(RunViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(runViewController, animated: true)
+    }
+}
+    
+    
+//    func goRunVC(taskid: Int) {
+//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//
+//        let RunViewController = (storyBoard.instantiateViewController(identifier: "RunViewController")) as! RunViewController
+//
+//        //何個目のタスクがクリックされたかどうか、の値をここでRunVCに渡す。
+//        RunViewController.indexnumber = taskid
+//
+//        self.navigationController?.pushViewController(RunViewController, animated: true)
+//
+//    }
+    
+    
+

@@ -131,22 +131,6 @@
             </objects>
             <point key="canvasLocation" x="1241" y="812"/>
         </scene>
-        <!--Home-->
-        <scene sceneID="xsC-xI-54c">
-            <objects>
-                <viewController id="ovU-cp-y1l" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qqy-PF-pML">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="TwB-JJ-txx"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="ckz-um-sJH"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x9E-FW-lPl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2565" y="829"/>
-        </scene>
         <!--ToDo-->
         <scene sceneID="EAl-A3-tIh">
             <objects>
@@ -408,13 +392,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="ToDoを追加してください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ZT-ZY-3TG">
-                                <rect key="frame" x="120.5" y="311" width="173.5" height="18"/>
+                                <rect key="frame" x="38.5" y="-137" width="173.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" name="Blue2"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pDx-NL-sfS">
-                                <rect key="frame" x="107" y="369" width="200" height="158"/>
+                                <rect key="frame" x="25" y="-79" width="200" height="158"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Nb9-pz-X2e">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="69"/>
@@ -469,7 +453,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Please add ToDo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7c-Yu-NPw">
-                                <rect key="frame" x="133.5" y="277" width="147" height="24"/>
+                                <rect key="frame" x="51.5" y="-171" width="147" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -726,7 +710,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="36b-3R-WhF" kind="relationship" relationship="viewControllers" id="1Aa-mZ-FgS"/>
-                        <segue destination="ovU-cp-y1l" kind="relationship" relationship="viewControllers" id="efP-Lf-CTc"/>
                         <segue destination="1Jv-2C-y0T" kind="relationship" relationship="viewControllers" id="IaJ-Ja-864"/>
                     </connections>
                 </tabBarController>

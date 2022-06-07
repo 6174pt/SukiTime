@@ -75,14 +75,15 @@ class EndViewController: UIViewController {
     
     @IBAction func delete(){
         todoArray=saveData.object(forKey: "list") as! [[Any]]
-        print(todoArray.count)
-        for i in 1...Int(todoArray.count-1) {
+        print("消す前",todoArray)
+        for i in 0..<Int(todoArray.count) {
             if (todoArray[i][0] as! String) == (runArray[0] as! String) {
                 if (todoArray[i][1] as! String) == (runArray[1] as! String){
                     if (todoArray[i][2] as! String) == (runArray[2] as! String){
+                        print("消すやつ",todoArray[i])
                         todoArray.remove(at: i)
                         saveData.set(todoArray, forKey: "list")
-                        print(todoArray)
+                        print(("消した後",todoArray))
                         print("delete")
                         break
                     }

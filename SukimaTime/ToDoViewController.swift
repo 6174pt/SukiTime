@@ -52,6 +52,7 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
         datePicker.datePickerMode = .date
         
         add.isEnabled=false
+        add.backgroundColor = UIColor(red: 133/255, green: 152/255, blue: 183/255, alpha: 0.4)
         
     }
     
@@ -103,14 +104,18 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
     func judgeNumber(){
         if todonumber == 0{
             add.isEnabled=false
+            add.backgroundColor = UIColor(red: 133/255, green: 152/255, blue: 183/255, alpha: 0.4)
         }else{
             if timenumber == 0{
                 add.isEnabled=false
+                add.backgroundColor = UIColor(red: 133/255, green: 152/255, blue: 183/255, alpha: 0.4)
             }else{
                 if datenumber == 0{
                     add.isEnabled=false
+                    add.backgroundColor = UIColor(red: 133/255, green: 152/255, blue: 183/255, alpha: 0.4)
                 }else{
                     add.isEnabled=true
+                    add.backgroundColor = UIColor(red: 133/255, green: 152/255, blue: 183/255, alpha: 1.0)
                 }
             }
         }
@@ -188,6 +193,7 @@ class ToDoViewController: UIViewController, UIAdaptivePresentationControllerDele
 //        項目のリセット
         setNumber()
         add.isEnabled=false
+        add.backgroundColor = UIColor(red: 133/255, green: 152/255, blue: 183/255, alpha: 0.4)
         let alert: UIAlertController = UIAlertController(title: "完了", message: "ToDoが追加されました", preferredStyle: .alert)
         alert.addAction(
             UIAlertAction(

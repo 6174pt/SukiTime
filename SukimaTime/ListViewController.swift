@@ -15,18 +15,18 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
     @IBOutlet weak var segmentedControl:UISegmentedControl!
     var array:[[Any]]=[]
     let saveData:UserDefaults=UserDefaults.standard
-    var todoArray:[[Any]]=[[]]
+    var todoArray:[[Any]]=[]
     var checked5Array:[[Any]]=[]
     var checked10Array:[[Any]]=[]
     var checked15Array:[[Any]]=[]
     var checked30Array:[[Any]]=[]
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         set()
-
+        
         table.dataSource = self
         table.delegate=self
         
@@ -47,16 +47,16 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
         set()
         
-//        ???
+        //        ???
         table.reloadData()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-          super.viewDidAppear(animated)
-          
+        super.viewDidAppear(animated)
+        
         table.reloadData()
-      }
+    }
     
     
     
@@ -77,26 +77,28 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         minutecheck()
         
         array=todoArray
-
+        
     }
     
     @objc func minutecheck(){
         print("minutecheck")
-        for i in 0..<Int(todoArray.count){
-            if Int(todoArray[i][1] as! String)! == 5{
-                checked5Array += [todoArray[i]]
+            for i in 0..<Int(todoArray.count){
+                if Int(todoArray[i][1] as! String)! == 5{
+                    checked5Array += [todoArray[i]]
+                }
+                if Int(todoArray[i][1] as! String)! == 10{
+                    checked10Array += [todoArray[i]]
+                }
+                if Int(todoArray[i][1] as! String)! == 15{
+                    checked15Array += [todoArray[i]]
+                }
+                if Int(todoArray[i][1] as! String)! == 30{
+                    checked30Array += [todoArray[i]]
+                }
+                
             }
-            if Int(todoArray[i][1] as! String)! == 10{
-                checked10Array += [todoArray[i]]
-            }
-            if Int(todoArray[i][1] as! String)! == 15{
-                checked15Array += [todoArray[i]]
-            }
-            if Int(todoArray[i][1] as! String)! == 30{
-                checked30Array += [todoArray[i]]
-            }
-            
-        }
+        
+        
     }
     
     @IBAction func ValueChanged(_ sender: UISegmentedControl) {
@@ -122,12 +124,12 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         table.reloadData()
     }
     
-//    tableviewのcellの幅
+    //    tableviewのcellの幅
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) ->CGFloat {
         return 100
     }
     
-//    tableviewのcellの数：
+    //    tableviewのcellの数：
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return array.count
@@ -192,10 +194,10 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
                 }
             }
             self.set()
-
+            
         }))
         dialog.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
         self.present(dialog, animated: true, completion: nil)
     }
-
+    
 }
